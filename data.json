@@ -190,6 +190,86 @@
                 "yaxis": 65
             },
             "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:34:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:38:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T11:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
         }
     ],
     "months": [
