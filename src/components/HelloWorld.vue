@@ -89,7 +89,6 @@ export default {
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
 
-      console.log(this.parseData());
       chart.data = this.parseData()
 
       // Set input format for the dates
@@ -218,34 +217,51 @@ export default {
       bullet.circle.fill = am4core.color("#fff");
       bullet.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
+      var clickedBullets = []
+
       bullet.events.on('hit', (ev) => {
         this.point = ev.target?.dataItem?.dataContext
 
         chart.series.values.forEach(element => {
           element.strokeOpacity = 0.5
-          // element.bullets.values.forEach(bull => {
-          //   bull.circle.fill = am4core.color("#fff");
-          // })
         });
-        bullet.circle.fill = am4core.color("#fff");
-        ev.target.circle.fill = am4core.color("#396478");
+        
+        // reset styles circles
+        clickedBullets.forEach(item => {
+          item.fill = am4core.color("#fff")
+          item.scale = 1
+        })
+        clickedBullets = []
+        // init circles styles
+        ev.target.circle.fill = am4core.color("#67b7dc");
+        ev.target.circle.scale = 1.3
+        // ev.target.circle.radius = 2;
+
+        clickedBullets.push(ev.target.circle)
       })
 
-      chart.events.on('hit', (ev) => {
 
+      // bullet.circle.adapter.add("fill", function(text, target) {
+      //   var data = target.dataItem.dataContext;
+      //   return text;
+      // });
+
+      chart.events.on('hit', (ev) => {
         //нажимаем на буллет, событие всплывает на график
         if (ev.event?.target?.tagName === 'circle') {
           return
         }
+        // reset styles circles
+        clickedBullets.forEach(item => {
+          item.fill = am4core.color("#fff")
+          item.scale = 1
+        })
+        clickedBullets = []
+
         chart.series.values.forEach(element => {
           element.strokeOpacity = 1
         });
       })
-
-      bullet.adapter.add("hit", function(fill, target) {
-        
-        console.log(234);
-      });
 
       // ------------show empty data label
       var indicator;
@@ -274,7 +290,6 @@ export default {
 
       chart.events.on("beforevalidated", function(ev) {
         // check if there's data
-        console.log(ev.target.data.length);
         if (ev.target.data.length == 0) {
           showIndicator();
         }
