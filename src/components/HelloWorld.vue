@@ -2,7 +2,7 @@
   <div>
     <div class="hello" ref="chartdiv">
     </div>
-    <div><b>{{ point }}</b></div>
+    <div><b>{{ getFormattedDate }}</b></div>
   </div>
 </template>
 
@@ -21,10 +21,16 @@ export default {
   data: () => ({
     points: result?.minutes || [],
     point: null,
-    clickedBullets: []
+    clickedBullets: [],
+    lastDate: null
   }),
   mounted() {
     this.newRender();
+  },
+  computed: {
+    getFormattedDate() {
+      return this.$moment(this.point).format('yyyy-MM-DD HH:mm:ss')
+    }
   },
   methods: {
     render () {
@@ -87,6 +93,7 @@ export default {
 
       // Create chart instance
       var chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
+      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
 
@@ -99,12 +106,14 @@ export default {
         y: null
       };
 
-      chart.events.on('up', (ev) => {
-        // console.log('swipe left');
+      // chart.events.on('wheelleft', (ev) => {
+      //   // console.log('swipe left');
         
-        console.log(ev);
-        return false
-      })
+      //   console.log(ev);
+      //   return false
+      // })
+
+      
 
       // chart.events.on('swipeleft', (ev) => {
       //   // console.log('swipe left');
@@ -133,6 +142,9 @@ export default {
       valueAxis.extraMax = 0.00001
       valueAxis.extraMin = 0.01
       valueAxis.start = 0
+      // valueAxis.min = 0;
+      valueAxis.renderer.gridContainer.zIndex = 1;
+      valueAxis.cursorTooltipEnabled = false;
 
       var gridIntervals = [
         // { timeUnit: "millisecond", count: 1 },
@@ -185,7 +197,54 @@ export default {
       dateAxis.start = 0.95;
       // dateAxis.end = 0.3;
       dateAxis.renderer.labels.template.location = 0;
-      
+
+      dateAxis.events.on('rangechangeended', (ev) => {
+        // console.log(
+        //   this.$moment(ev.target.minZoomed).format('yyyy-MM-DD HH:mm:ss'),
+        //   this.$moment(ev.target.maxZoomed).format('yyyy-MM-DD HH:mm:ss')
+        // );
+
+        var startDate = this.$moment(ev.target.minZoomed);
+        var endDate = this.$moment(ev.target.maxZoomed);
+        // var newDate = moment.duration(endTime.diff(startTime)).asDate
+        //   console.log(newDate)
+        // )
+        const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
+        const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
+        const startOfCenterDate = centerDate.startOf('day')
+
+        console.log(startOfCenterDate);
+
+        if (this.$moment(this.point).isSameOrBefore()) {
+          this.point = startOfCenterDate
+        }
+
+        // console.log(endDate.clone().subtract(minutes, 'minutes'))
+      })
+      // Create axis ranges for weekends
+      // dateAxis.events.on("datavalidated", (ev) => {
+      //   const axis = ev.target;
+      //   const start = this.$moment(axis.positionToDate(0));
+      //   const end = this.$moment(axis.positionToDate(1));
+      //   console.log(start, end);
+
+      //   // Get start date
+      //   let current = start.clone().minutes(0).seconds(0);
+
+      //   while(current.isBefore(end)) {
+      //     if (current.hours() == 0 && current.minutes() == 0) {
+      //       // Create a range
+      //       var range = axis.axisRanges.create();
+      //       range.date = current.toDate();
+      //       range.endDate = current.clone().add('minute', 1).toDate();
+      //       range.axisFill.fill = am4core.color("#396478");
+      //       range.axisFill.fillOpacity = 0.2;
+      //       range.grid.strokeOpacity = 0;
+      //     }
+      //     current.add('hour', 1)
+      //   }
+        
+      // });
       // при месячном это
       // dateAxis.gridIntervals.setAll(gridIntervals);
       // dateAxis.baseInterval = {
@@ -257,7 +316,7 @@ export default {
 
         bullet.events.on('hit', (ev) => {
           ev.event.stopPropagation()
-          this.point = this.$moment(ev.target?.dataItem?.dataContext?.date).format('yyyy-MM-DD HH:mm:ss')
+          this.point = ev.target?.dataItem?.dataContext?.date
 
           chart.series.values.forEach(element => {
             element.strokeOpacity = 0.5
@@ -321,22 +380,27 @@ export default {
         indicator.hide();
       }
 
-      chart.events.on("beforevalidated", function(ev) {
+      chart.events.on("beforevalidated", (ev) => {
+        
         // check if there's data
         if (ev.target.data.length == 0) {
           showIndicator();
         }
         else if (indicator) {
           hideIndicator();
+        } else {
+          this.point = ev.target.data?.[ev.target.data.length - 1].date
         }
       });
       // ----------------
       // bullethover.properties.cursorOptions = am4core.MouseCursorStyle.grabbing;
       // Make a panning cursor
-      chart.cursor = new am4charts.XYCursor();
-      chart.cursor.behavior = "panXY";
+      const cursor = new am4charts.XYCursor();
+      cursor.behavior = "panX";
+      chart.cursor = cursor
       // chart.cursor.xAxis = dateAxis;
       // chart.cursor.snapToSeries = series;
+      cursor.lineX.disabled = true;
       chart.cursor.opacity = 0;
       chart.cursor.lineY.opacity = 0;
       chart.cursor.lineX.opacity = 0;
@@ -346,7 +410,7 @@ export default {
       // })
       chart.scrollbarX.disabled = true;
       chart.zoomOutButton.disabled = true;
-      chart.swipeable = true;
+      // chart.swipeable = true;
     }
   },
   beforeDestroy() {
