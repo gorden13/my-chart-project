@@ -19,7 +19,7 @@ import result from '/data.json'
 export default {
   name: 'HelloWorld',
   data: () => ({
-    points: result?.minutes || [],
+    points: result?.['5minutes'] || [],
     point: null,
     clickedBullets: [],
     lastDate: null
@@ -28,8 +28,10 @@ export default {
     this.newRender();
   },
   computed: {
-    getFormattedDate() {
-      return this.$moment(this.point).format('yyyy-MM-DD HH:mm:ss')
+    getFormattedDate: {
+      get () {
+        return this.$moment(this.point).format('yyyy-MM-DD')
+      }
     }
   },
   methods: {
@@ -101,38 +103,6 @@ export default {
 
       // Set input format for the dates
       // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
-      let cursorPosition = {
-        x: null,
-        y: null
-      };
-
-      // chart.events.on('wheelleft', (ev) => {
-      //   // console.log('swipe left');
-        
-      //   console.log(ev);
-      //   return false
-      // })
-
-      
-
-      // chart.events.on('swipeleft', (ev) => {
-      //   // console.log('swipe left');
-      //   let xAxis = ev.target.xAxes.getIndex(0);
-      //   let yAxis = ev.target.yAxes.getIndex(0);
-      //   cursorPosition.x = xAxis.positionToDate(xAxis.toAxisPosition(ev.target.cursor.xPosition));
-      //   cursorPosition.y = yAxis.positionToValue(yAxis.toAxisPosition(ev.target.cursor.yPosition));
-
-      //   console.log(cursorPosition);
-      // })
-
-      // chart.events.on('swiperight', (ev) => {
-      //   let xAxis = ev.target.xAxes.getIndex(0);
-      //   let yAxis = ev.target.yAxes.getIndex(0);
-      //   cursorPosition.x = xAxis.positionToDate(xAxis.toAxisPosition(ev.target.cursor.xPosition));
-      //   cursorPosition.y = yAxis.positionToValue(yAxis.toAxisPosition(ev.target.cursor.yPosition));
-
-      //   console.log(cursorPosition);
-      // })
 
       // Create axes
       var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -198,29 +168,42 @@ export default {
       // dateAxis.end = 0.3;
       dateAxis.renderer.labels.template.location = 0;
 
+      // chart.events.on('up', (ev) => {
+
+      //   setTimeout(() => {
+      //     const startDate = this.$moment(ev.target.xAxes.values[0].minZoomed);
+      //     const endDate = this.$moment(ev.target.xAxes.values[0].maxZoomed);
+
+      //     console.log(startDate, endDate);
+
+      //     const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
+      //     const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
+      //     const startOfCenterDate = centerDate.startOf('day')
+
+      //     if (this.$moment(this.point).isSameOrBefore()) {
+      //       this.point = startOfCenterDate
+      //     }
+      //   }, 300)
+        
+      // })
+
       dateAxis.events.on('rangechangeended', (ev) => {
-        // console.log(
-        //   this.$moment(ev.target.minZoomed).format('yyyy-MM-DD HH:mm:ss'),
-        //   this.$moment(ev.target.maxZoomed).format('yyyy-MM-DD HH:mm:ss')
-        // );
+        setTimeout(() => {
+          const startDate = this.$moment(ev.target.minZoomed);
+          const endDate = this.$moment(ev.target.maxZoomed);
 
-        var startDate = this.$moment(ev.target.minZoomed);
-        var endDate = this.$moment(ev.target.maxZoomed);
-        // var newDate = moment.duration(endTime.diff(startTime)).asDate
-        //   console.log(newDate)
-        // )
-        const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
-        const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
-        const startOfCenterDate = centerDate.startOf('day')
+          const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
+          const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
+          const startOfCenterDate = centerDate.startOf('day')
 
-        console.log(startOfCenterDate);
+          const lastDate = this.$moment(this.point).clone().startOf('day')
 
-        if (this.$moment(this.point).isSameOrBefore()) {
-          this.point = startOfCenterDate
-        }
-
-        // console.log(endDate.clone().subtract(minutes, 'minutes'))
+          if (!lastDate.isSame(startOfCenterDate)) {
+            this.point = startOfCenterDate
+          }
+        }, 300)
       })
+
       // Create axis ranges for weekends
       // dateAxis.events.on("datavalidated", (ev) => {
       //   const axis = ev.target;
@@ -245,6 +228,7 @@ export default {
       //   }
         
       // });
+      
       // при месячном это
       // dateAxis.gridIntervals.setAll(gridIntervals);
       // dateAxis.baseInterval = {
