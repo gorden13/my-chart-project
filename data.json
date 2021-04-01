@@ -2,7 +2,93 @@
     "pressure": [
         {
             "date": {
-                "from": "2020-04-17T09:59:00",
+                "from": "2021-03-23T14:37:00",
+                "to": "2021-03-23T14:37:59"
+            },
+            "average": {
+                "single": 103,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 180,
+                "diapason": null,
+                "yaxis": 180.0
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65.0
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-03-23T14:46:00",
+                "to": "2021-03-23T14:46:59"
+            },
+            "average": {
+                "single": 100,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 128,
+                "diapason": null,
+                "yaxis": 128.0
+            },
+            "diastolic": {
+                "single": 86,
+                "diapason": null,
+                "yaxis": 86.0
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-03-25T14:46:00",
+                "to": "2021-03-23T14:46:59"
+            },
+            "average": {
+                "single": 100,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 128,
+                "diapason": null,
+                "yaxis": 128.0
+            },
+            "diastolic": {
+                "single": 86,
+                "diapason": null,
+                "yaxis": 86.0
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-03-25T14:48:00",
+                "to": "2021-03-23T14:46:59"
+            },
+            "average": {
+                "single": 120,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 128,
+                "diapason": null,
+                "yaxis": 128.0
+            },
+            "diastolic": {
+                "single": 86,
+                "diapason": null,
+                "yaxis": 86.0
+            },
+            "message": null
+        }
+    ],
+    "1minutes": [
+        {
+            "date": {
+                "from": "2020-04-17T10:00:00",
                 "to": "2020-04-17T09:59:59"
             },
             "average": {
@@ -23,32 +109,11 @@
         },
         {
             "date": {
-                "from": "2020-05-17T10:01:35",
-                "to": "2020-05-17T09:59:59"
+                "from": "2020-04-17T10:02:00",
+                "to": "2020-04-17T09:59:59"
             },
             "average": {
-                "single": 95,
-                "diapason": null
-            },
-            "systolic": {
-                "single": 165,
-                "diapason": null,
-                "yaxis": 165
-            },
-            "diastolic": {
-                "single": 17,
-                "diapason": null,
-                "yaxis": 176
-            },
-            "message": null
-        },
-        {
-            "date": {
-                "from": "2020-06-17T10:02:33",
-                "to": "2020-06-17T09:59:59"
-            },
-            "average": {
-                "single": 91,
+                "single": 55,
                 "diapason": null
             },
             "systolic": {
@@ -65,27 +130,233 @@
         },
         {
             "date": {
-                "from": "2020-07-17T10:04:22",
-                "to": "2020-07-17T09:59:59"
+                "from": "2020-04-17T10:06:45",
+                "to": "2020-04-17T10:06:45"
             },
             "average": {
-                "single": 77,
+                "single": 57,
                 "diapason": null
             },
             "systolic": {
-                "single": 155,
+                "single": 127,
                 "diapason": null,
-                "yaxis": 122
+                "yaxis": 127
             },
             "diastolic": {
-                "single": 56,
+                "single": 87,
                 "diapason": null,
-                "yaxis": 76
+                "yaxis": 87
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T10:10:33",
+                "to": "2020-04-17T10:10:33"
+            },
+            "average": {
+                "single": 67,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T10:22:00",
+                "to": "2020-04-17T10:24:59"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T05:10:33",
+                "to": "2020-04-18T10:10:33"
+            },
+            "average": {
+                "single": 67,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:34:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T10:38:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T11:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-19T05:15:33",
+                "to": "2020-04-18T10:10:33"
+            },
+            "average": {
+                "single": 134,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-19T05:17:33",
+                "to": "2020-04-18T10:10:33"
+            },
+            "average": {
+                "single": 145,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-19T06:10:33",
+                "to": "2020-04-18T10:10:33"
+            },
+            "average": {
+                "single": 127,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
             },
             "message": null
         }
     ],
-    "1minutes": [
+    "5minutes": [
         {
             "date": {
                 "from": "2020-04-17T10:00:00",
@@ -272,7 +543,7 @@
             "message": null
         }
     ],
-    "5minutes": [
+    "1hours": [
         {
             "date": {
                 "from": "2020-04-17T10:00:00",
@@ -296,7 +567,7 @@
         },
         {
             "date": {
-                "from": "2020-04-17T10:02:00",
+                "from": "2020-04-17T11:02:00",
                 "to": "2020-04-17T09:59:59"
             },
             "average": {
@@ -317,7 +588,7 @@
         },
         {
             "date": {
-                "from": "2020-04-17T10:06:45",
+                "from": "2020-04-17T12:06:45",
                 "to": "2020-04-17T10:06:45"
             },
             "average": {
@@ -338,7 +609,7 @@
         },
         {
             "date": {
-                "from": "2020-04-17T10:10:33",
+                "from": "2020-04-17T13:10:33",
                 "to": "2020-04-17T10:10:33"
             },
             "average": {
@@ -359,7 +630,7 @@
         },
         {
             "date": {
-                "from": "2020-04-17T10:22:00",
+                "from": "2020-04-17T14:22:00",
                 "to": "2020-04-17T10:24:59"
             },
             "average": {
@@ -380,7 +651,7 @@
         },
         {
             "date": {
-                "from": "2020-04-18T10:22:00"
+                "from": "2020-04-18T06:22:00"
             },
             "average": {
                 "single": 96,
@@ -400,7 +671,7 @@
         },
         {
             "date": {
-                "from": "2020-04-18T10:34:00"
+                "from": "2020-04-18T07:34:00"
             },
             "average": {
                 "single": 96,
@@ -420,7 +691,194 @@
         },
         {
             "date": {
-                "from": "2020-04-18T10:38:00"
+                "from": "2020-04-18T09:38:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T11:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        }
+    ],
+    "1days": [
+        {
+            "date": {
+                "from": "2020-04-17T10:00:00",
+                "to": "2020-04-17T09:59:59"
+            },
+            "average": {
+                "single": 91,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 122,
+                "diapason": null,
+                "yaxis": 122
+            },
+            "diastolic": {
+                "single": 76,
+                "diapason": null,
+                "yaxis": 76
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T11:02:00",
+                "to": "2020-04-17T09:59:59"
+            },
+            "average": {
+                "single": 55,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 122,
+                "diapason": null,
+                "yaxis": 122
+            },
+            "diastolic": {
+                "single": 76,
+                "diapason": null,
+                "yaxis": 76
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T12:06:45",
+                "to": "2020-04-17T10:06:45"
+            },
+            "average": {
+                "single": 57,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 127,
+                "diapason": null,
+                "yaxis": 127
+            },
+            "diastolic": {
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T13:10:33",
+                "to": "2020-04-17T10:10:33"
+            },
+            "average": {
+                "single": 67,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 134,
+                "diapason": null,
+                "yaxis": 134
+            },
+            "diastolic": {
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-17T14:22:00",
+                "to": "2020-04-17T10:24:59"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T06:22:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T07:34:00"
+            },
+            "average": {
+                "single": 96,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 154,
+                "diapason": null,
+                "yaxis": 154
+            },
+            "diastolic": {
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2020-04-18T09:38:00"
             },
             "average": {
                 "single": 96,

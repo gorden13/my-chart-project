@@ -19,7 +19,7 @@ import result from '/data.json'
 export default {
   name: 'HelloWorld',
   data: () => ({
-    points: result?.['5minutes'] || [],
+    points: result?.['pressure'] || [],
     point: null,
     clickedBullets: [],
     lastDate: null
@@ -77,14 +77,54 @@ export default {
           close: 120
         }
       });
-      // return []
+      return []
+
+      function randomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // genearte all days of month
       // const data = []
-      // for(let i = 0; i < 12; i++) {
+      // for(let i = 1; i < 31; i++) {
+      //   const val = randomInteger(70, 160)
+      //   const hours = randomInteger(0, 23)
+      //   console.log(val, hours)
+
       //   data.push({
-      //     date: new Date(2016, i, 1),
-      //     value: Math.round(Math.random() * 50)
+      //     date: new Date(2020, 2, i, hours, 4),
+      //     value: val
       //   })
       // }
+      // return data
+      // generate all month of year
+      // const data = []
+      // for(let i = 0; i < 12; i++) {
+      //   const val = randomInteger(70, 160)
+      //   const minute = randomInteger(0, 59)
+      //   const hour = randomInteger(0, 23)
+      //   const day = randomInteger(1, 28)
+
+      //   data.push({
+      //     date: new Date(2020, i, day, hour, minute),
+      //     value: val
+      //   })
+      // }
+      // return data
+      // generate years diapason
+      // const data = []
+      // for(let i = 2000; i < 2014; i++) {
+      //   const val = randomInteger(70, 160)
+      //   const minute = randomInteger(0, 59)
+      //   const hour = randomInteger(0, 23)
+      //   const day = randomInteger(1, 28)
+      //   const month = randomInteger(1, 11)
+
+      //   data.push({
+      //     date: new Date(i, month, day, hour, minute),
+      //     value: val
+      //   })
+      // }
+      // console.log(data);
       // return data
     },
     newRender () {
@@ -98,7 +138,6 @@ export default {
       chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
-
       chart.data = this.parseData()
 
       // Set input format for the dates
@@ -109,98 +148,154 @@ export default {
       var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
       valueAxis.tooltip.disabled = true;
-      valueAxis.extraMax = 0.00001
-      valueAxis.extraMin = 0.01
-      valueAxis.start = 0
+      valueAxis.extraMax = 0.05
+      valueAxis.extraMin = 0.05
+      // valueAxis.start = 0
       // valueAxis.min = 0;
       valueAxis.renderer.gridContainer.zIndex = 1;
       valueAxis.cursorTooltipEnabled = false;
 
       var gridIntervals = [
-        // { timeUnit: "millisecond", count: 1 },
-        // { timeUnit: "millisecond", count: 5 },
-        // { timeUnit: "millisecond", count: 10 },
-        // { timeUnit: "millisecond", count: 50 },
-        // { timeUnit: "millisecond", count: 100 },
-        // { timeUnit: "millisecond", count: 500 },
-        // { timeUnit: "second", count: 1 },
-        // { timeUnit: "second", count: 5 },
-        // { timeUnit: "second", count: 10 },
-        // { timeUnit: "second", count: 30 },
-        // { timeUnit: "minute", count: 1 },
+        { timeUnit: "millisecond", count: 1 },
+        { timeUnit: "millisecond", count: 5 },
+        { timeUnit: "millisecond", count: 10 },
+        { timeUnit: "millisecond", count: 50 },
+        { timeUnit: "millisecond", count: 100 },
+        { timeUnit: "millisecond", count: 500 },
+        { timeUnit: "second", count: 1 },
+        { timeUnit: "second", count: 5 },
+        { timeUnit: "second", count: 10 },
+        { timeUnit: "second", count: 30 },
+        { timeUnit: "minute", count: 1 },
         { timeUnit: "minute", count: 5 },
-        // { timeUnit: "minute", count: 10 },
-        // { timeUnit: "minute", count: 30 },
-        // { timeUnit: "hour", count: 1 },
-        // { timeUnit: "hour", count: 2 },
-        // { timeUnit: "hour", count: 3 },
-        // { timeUnit: "hour", count: 6 },
-        // { timeUnit: "hour", count: 12 },
-        // { timeUnit: "day", count: 1 },
-        // { timeUnit: "day", count: 2 },
-        // { timeUnit: "day", count: 3 },
-        // { timeUnit: "day", count: 4 },
-        // { timeUnit: "day", count: 5 },
-        // { timeUnit: "month", count: 1 },
-        // { timeUnit: "month", count: 2 },
-        // { timeUnit: "month", count: 3 },
-        // { timeUnit: "month", count: 6 },
-        // { timeUnit: "month", count: 12 },
-        // { timeUnit: "year", count: 1 },
-        // { timeUnit: "year", count: 2 },
-        // { timeUnit: "year", count: 5 },
-        // { timeUnit: "year", count: 10 },
-        // { timeUnit: "year", count: 50 },
-        // { timeUnit: "year", count: 100 }
+        { timeUnit: "minute", count: 10 },
+        { timeUnit: "minute", count: 30 },
+        { timeUnit: "hour", count: 1 },
+        { timeUnit: "hour", count: 2 },
+        { timeUnit: "hour", count: 3 },
+        { timeUnit: "hour", count: 6 },
+        { timeUnit: "hour", count: 12 },
+        { timeUnit: "day", count: 1 },
+        { timeUnit: "day", count: 2 },
+        { timeUnit: "day", count: 3 },
+        { timeUnit: "day", count: 4 },
+        { timeUnit: "day", count: 5 },
+        { timeUnit: "month", count: 1 },
+        { timeUnit: "month", count: 2 },
+        { timeUnit: "month", count: 3 },
+        { timeUnit: "month", count: 6 },
+        { timeUnit: "month", count: 12 },
+        { timeUnit: "year", count: 1 },
+        { timeUnit: "year", count: 2 },
+        { timeUnit: "year", count: 5 },
+        { timeUnit: "year", count: 10 },
+        { timeUnit: "year", count: 50 },
+        { timeUnit: "year", count: 100 }
       ];
-      dateAxis.gridIntervals.setAll(gridIntervals);
+      // dateAxis.gridIntervals.setAll(gridIntervals);
+      // chart.paddingRight = 20
+      // chart.paddingLeft = 20
+
+      // при минутном
+      dateAxis.dateFormats.setKey("minute", "HH:mm");
+      dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
       dateAxis.baseInterval = {
         timeUnit: "minute",
         count: 5
       };
-      // при часоом этот набор
-      // dateAxis.dateFormats.setKey("hour", "HH:mm");
-      // dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
-      dateAxis.renderer.minGridDistance = 75;
+      dateAxis.renderer.minGridDistance = 50;
       dateAxis.renderer.grid.template.location = 0;
-      dateAxis.startLocation = -0.1;
-      dateAxis.start = 0.95;
-      // dateAxis.end = 0.3;
+      // dateAxis.startLocation = -0.3;
+      // dateAxis.endLocation = 1.3;
+      // dateAxis.start = 0.98
+      
+      // dateAxis.end = 0.02;
       dateAxis.renderer.labels.template.location = 0;
 
-      // chart.events.on('up', (ev) => {
+      // при часовом этот набор
+      // dateAxis.dateFormats.setKey("hour", "HH:mm");
+      // dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "hour",
+      //   count: 1
+      // };
+      // dateAxis.renderer.minGridDistance = 75;
+      // dateAxis.renderer.grid.template.location = 0;
+      // dateAxis.start = 0.5;
+      // dateAxis.renderer.labels.template.location = 0.0001;
 
-      //   setTimeout(() => {
-      //     const startDate = this.$moment(ev.target.xAxes.values[0].minZoomed);
-      //     const endDate = this.$moment(ev.target.xAxes.values[0].maxZoomed);
+      // при дневном
+      // dateAxis.dateFormats.setKey("day", "dd");
+      // dateAxis.periodChangeDateFormats.setKey("day", "dd");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "day",
+      //   count: 1
+      // };
+      // dateAxis.renderer.minGridDistance = 75;
+      // dateAxis.renderer.grid.template.location = 0;
+      // dateAxis.start = 0.5;
+      // dateAxis.renderer.labels.template.location = 0.0001;
 
-      //     console.log(startDate, endDate);
+      // при месячном
+      // dateAxis.dateFormats.setKey("month", "MMMM");
+      // dateAxis.periodChangeDateFormats.setKey("month", "MMMM");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "month",
+      //   count: 1
+      // };
+      // dateAxis.renderer.minGridDistance = 50;
+      // dateAxis.renderer.grid.template.location = 0;
+      // dateAxis.start = 0;
+      // dateAxis.renderer.labels.template.location = 0;
 
-      //     const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
-      //     const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
-      //     const startOfCenterDate = centerDate.startOf('day')
+      // при годовом
+      // dateAxis.dateFormats.setKey("year", "yyyy");
+      // dateAxis.periodChangeDateFormats.setKey("year", "yyyy");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "year",
+      //   count: 1
+      // };
+      // dateAxis.renderer.minGridDistance = 50;
+      // dateAxis.renderer.grid.template.location = 0;
+      // dateAxis.start = 0;
+      // dateAxis.renderer.labels.template.location = 0;
 
-      //     if (this.$moment(this.point).isSameOrBefore()) {
-      //       this.point = startOfCenterDate
-      //     }
-      //   }, 300)
-        
-      // })
+      chart.events.on('up', (ev) => {
+          //дата начала всей шкалы
+          const startBaseDate = this.$moment(ev.target.xAxes.values[0]._minReal)
+          const endBaseDate = this.$moment(ev.target.xAxes.values[0]._maxReal)
+          //дата начала/конца растянутой базовой шкалы
+          const minStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._minZoomed).add(5, 'minutes')
+          const maxStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._maxZoomed).subtract(5, 'minutes')
+
+          if (minStretchedScaleDate.isBefore(startBaseDate)) {
+            console.log('Вышли за границы слева')
+          }
+
+          if (maxStretchedScaleDate.isAfter(endBaseDate)) {
+            console.log('Вышли за границы справа')
+          }
+      })
 
       dateAxis.events.on('rangechangeended', (ev) => {
         setTimeout(() => {
-          const startDate = this.$moment(ev.target.minZoomed);
-          const endDate = this.$moment(ev.target.maxZoomed);
-
+          //последняя точка
+          const lastPoint = this.$moment(this.point)
+          //дата начала/конца базовой видимой шалы
+          const startDate = this.$moment(ev.target.minZoomed)
+          const endDate = this.$moment(ev.target.maxZoomed)
+          //находим середину между датой начала и конца видимой шкалы
           const diffStartEndMinutes = this.$moment.duration(endDate.diff(startDate)).asMinutes() / 2
           const centerDate = endDate.clone().subtract(diffStartEndMinutes, 'minutes')
           const startOfCenterDate = centerDate.startOf('day')
 
-          const lastDate = this.$moment(this.point).clone().startOf('day')
+          const lastDateNew = lastPoint.clone().startOf('day')
 
-          if (!lastDate.isSame(startOfCenterDate)) {
-            this.point = startOfCenterDate
+          if (!lastDateNew.isSame(startOfCenterDate)) {
+            this.point = startOfCenterDate;
+            // this.$store.commit('monitoringv2/SET_LEGEND')
           }
+
         }, 300)
       })
 
@@ -288,8 +383,8 @@ export default {
         // series.tooltipText = "{value}"
         series.strokeWidth = 2;
         series.minBulletDistance = 15;
-        series.dataFields.openValueY = "open";
-        series.dataFields.closeValueY = "close";
+        // series.dataFields.openValueY = "open";
+        // series.dataFields.closeValueY = "close";
 
         // Make bullets grow on hover
         var bullet = series.bullets.push(new am4charts.CircleBullet());
@@ -297,10 +392,13 @@ export default {
         bullet.circle.radius = 4;
         bullet.circle.fill = am4core.color("#fff");
         bullet.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+        bullet.map.setKey('id', 123) 
 
         bullet.events.on('hit', (ev) => {
           ev.event.stopPropagation()
           this.point = ev.target?.dataItem?.dataContext?.date
+
+          console.log(ev.target.dataItem.index);
 
           chart.series.values.forEach(element => {
             element.strokeOpacity = 0.5
@@ -375,6 +473,22 @@ export default {
         } else {
           this.point = ev.target.data?.[ev.target.data.length - 1].date
         }
+
+        const conc = (pointsLength, startDatePoint, endDatePoint) => {
+          let scale = 0
+
+          const duration = this.$moment.duration(this.$moment(endDatePoint).diff(this.$moment(startDatePoint))).asMinutes()
+          console.log(duration);
+
+          const koef = pointsLength / duration
+
+          console.log(koef);
+          return scale
+        }
+
+        const start = conc(ev.target.data.length, ev.target.data[0].date, ev.target.data[ev.target.data.length - 1].date)
+
+        // dateAxis.start = 0;
       });
       // ----------------
       // bullethover.properties.cursorOptions = am4core.MouseCursorStyle.grabbing;
@@ -394,7 +508,7 @@ export default {
       // })
       chart.scrollbarX.disabled = true;
       chart.zoomOutButton.disabled = true;
-      // chart.swipeable = true;
+      chart.swipeable = true;
     }
   },
   beforeDestroy() {
