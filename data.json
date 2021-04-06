@@ -1,5 +1,189 @@
 {   
+    "test": [
+        {
+            "date": {
+                "from": "2021-01-27T21:42:00",
+                "to": "2021-01-27T21:42:59"
+            },
+            "average": {
+                "single": 120,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 120,
+                "single": 120,
+                "diapason": null,
+                "yaxis": 120
+            },
+            "diastolic": {
+                "yAxis": 120,
+                "single": 120,
+                "diapason": null,
+                "yaxis": 120
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T12:39:00",
+                "to": "2021-01-29T12:39:59"
+            },
+            "average": {
+                "single": 132,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 140,
+                "single": 140,
+                "diapason": null,
+                "yaxis": 140
+            },
+            "diastolic": {
+                "yAxis": 128,
+                "single": 128,
+                "diapason": null,
+                "yaxis": 128
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T13:01:00",
+                "to": "2021-01-29T13:01:59"
+            },
+            "average": {
+                "single": 143,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 150,
+                "single": 150,
+                "diapason": null,
+                "yaxis": 150
+            },
+            "diastolic": {
+                "yAxis": 140,
+                "single": 140,
+                "diapason": null,
+                "yaxis": 140
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T13:16:00",
+                "to": "2021-01-29T13:16:59"
+            },
+            "average": {
+                "single": 93,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 120,
+                "single": 120,
+                "diapason": null,
+                "yaxis": 120
+            },
+            "diastolic": {
+                "yAxis": 80,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T16:07:00",
+                "to": "2021-01-29T16:07:59"
+            },
+            "average": {
+                "single": 93,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 120,
+                "single": 120,
+                "diapason": null,
+                "yaxis": 120
+            },
+            "diastolic": {
+                "yAxis": 80,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T16:13:00",
+                "to": "2021-01-29T16:13:59"
+            },
+            "average": {
+                "single": 100,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 110,
+                "single": 110,
+                "diapason": null,
+                "yaxis": 110
+            },
+            "diastolic": {
+                "yAxis": 95,
+                "single": 95,
+                "diapason": null,
+                "yaxis": 95
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-01-29T16:23:00",
+                "to": "2021-01-29T16:23:59"
+            },
+            "average": {
+                "single": 127,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 140,
+                "single": 140,
+                "diapason": null,
+                "yaxis": 140
+            },
+            "diastolic": {
+                "yAxis": 120,
+                "single": 120,
+                "diapason": null,
+                "yaxis": 120
+            },
+            "message": null
+        }
+    ],
     "pressure": [
+        {
+            "date": {
+                "from": "2021-03-22T10:46:00",
+                "to": "2021-03-23T14:37:59"
+            },
+            "average": {
+                "single": 122,
+                "diapason": null
+            },
+            "systolic": {
+                "single": 123,
+                "diapason": null,
+                "yaxis": 180.0
+            },
+            "diastolic": {
+                "single": 144,
+                "diapason": null,
+                "yaxis": 65.0
+            },
+            "message": null
+        },
         {
             "date": {
                 "from": "2021-03-23T14:37:00",
@@ -41,46 +225,27 @@
                 "yaxis": 86.0
             },
             "message": null
-        },
+        }
+    ],
+    "1point": [
         {
             "date": {
-                "from": "2021-03-25T14:46:00",
-                "to": "2021-03-23T14:46:59"
+                "from": "2021-03-23T14:37:00",
+                "to": "2021-03-23T14:37:59"
             },
             "average": {
-                "single": 100,
+                "single": 103,
                 "diapason": null
             },
             "systolic": {
-                "single": 128,
+                "single": 180,
                 "diapason": null,
-                "yaxis": 128.0
+                "yaxis": 180.0
             },
             "diastolic": {
-                "single": 86,
+                "single": 65,
                 "diapason": null,
-                "yaxis": 86.0
-            },
-            "message": null
-        },
-        {
-            "date": {
-                "from": "2021-03-25T14:48:00",
-                "to": "2021-03-23T14:46:59"
-            },
-            "average": {
-                "single": 120,
-                "diapason": null
-            },
-            "systolic": {
-                "single": 128,
-                "diapason": null,
-                "yaxis": 128.0
-            },
-            "diastolic": {
-                "single": 86,
-                "diapason": null,
-                "yaxis": 86.0
+                "yaxis": 65.0
             },
             "message": null
         }

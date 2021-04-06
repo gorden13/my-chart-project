@@ -3,6 +3,7 @@
     <div class="hello" ref="chartdiv">
     </div>
     <div><b>{{ getFormattedDate }}</b></div>
+    <div style="margin-top: 20px; font-size:25px; color: red"><b>{{ getFormattedDateNew }}</b></div>
   </div>
 </template>
 
@@ -20,9 +21,11 @@ export default {
   name: 'HelloWorld',
   data: () => ({
     points: result?.['pressure'] || [],
+    pointsNew: result?.['test'] || [],
     point: null,
     clickedBullets: [],
-    lastDate: null
+    lastDate: null,
+    allBulets: []
   }),
   mounted() {
     this.newRender();
@@ -31,6 +34,11 @@ export default {
     getFormattedDate: {
       get () {
         return this.$moment(this.point).format('yyyy-MM-DD')
+      }
+    },
+    getFormattedDateNew: {
+      get () {
+        return this.$moment(this.point).format('yyyy-MM-DD HH:mm:ss')
       }
     }
   },
@@ -66,6 +74,18 @@ export default {
 
       this.chart = chart;
     },
+    parseNewDate(arr) {
+      return this.pointsNew.map(item => {
+        return {
+          date: this.$moment(item.date?.from).toDate(),
+          value: item.average?.single,
+          systolic: item.systolic?.single,
+          diastolic: item.diastolic?.single,
+          open: 70,
+          close: 120
+        }
+      });
+    },
     parseData (arr) {
       return this.points.map(item => {
         return {
@@ -77,7 +97,6 @@ export default {
           close: 120
         }
       });
-      return []
 
       function randomInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -152,8 +171,10 @@ export default {
       valueAxis.extraMin = 0.05
       // valueAxis.start = 0
       // valueAxis.min = 0;
-      valueAxis.renderer.gridContainer.zIndex = 1;
+      // valueAxis.renderer.gridContainer.zIndex = 1;
       valueAxis.cursorTooltipEnabled = false;
+
+      // valueAxis.renderer.labels.template.dy = -20;
 
       var gridIntervals = [
         { timeUnit: "millisecond", count: 1 },
@@ -212,6 +233,8 @@ export default {
       // dateAxis.end = 0.02;
       dateAxis.renderer.labels.template.location = 0;
 
+      
+
       // при часовом этот набор
       // dateAxis.dateFormats.setKey("hour", "HH:mm");
       // dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
@@ -265,15 +288,17 @@ export default {
           const startBaseDate = this.$moment(ev.target.xAxes.values[0]._minReal)
           const endBaseDate = this.$moment(ev.target.xAxes.values[0]._maxReal)
           //дата начала/конца растянутой базовой шкалы
-          const minStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._minZoomed).add(5, 'minutes')
-          const maxStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._maxZoomed).subtract(5, 'minutes')
+          const minStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._minZoomed)
+          const maxStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._maxZoomed)
 
           if (minStretchedScaleDate.isBefore(startBaseDate)) {
             console.log('Вышли за границы слева')
+            chart.data = this.parseData()
           }
 
           if (maxStretchedScaleDate.isAfter(endBaseDate)) {
             console.log('Вышли за границы справа')
+            chart.data = this.parseNewDate()
           }
       })
 
@@ -291,10 +316,12 @@ export default {
 
           const lastDateNew = lastPoint.clone().startOf('day')
 
-          if (!lastDateNew.isSame(startOfCenterDate)) {
+          //  dateAxis.start = 0.98;
+
+          // if (!lastDateNew.isSame(startOfCenterDate)) {
             this.point = startOfCenterDate;
             // this.$store.commit('monitoringv2/SET_LEGEND')
-          }
+          // }
 
         }, 300)
       })
@@ -338,8 +365,8 @@ export default {
       // dateAxis.renderer.grid.template.location = 0;
       // dateAxis.renderer.labels.template.location = 0;
 
-      dateAxis.keepSelection = true;
-      dateAxis.tooltip.disabled = true;
+     
+      
 
       // dateAxis.adapter.add("verticalCenter", function() {
       //   console.log('center');
@@ -375,14 +402,16 @@ export default {
 
       var clickedBullets = []
 
-      const createSeries = (valueProp) => {
+      const createSeries = (valueProp, color) => {
         // Create series
         var series = chart.series.push(new am4charts.LineSeries());
         series.dataFields.valueY = valueProp;
         series.dataFields.dateX = "date";
         // series.tooltipText = "{value}"
+        series.stroke = color;
         series.strokeWidth = 2;
         series.minBulletDistance = 15;
+        series.showOnInit = false;
         // series.dataFields.openValueY = "open";
         // series.dataFields.closeValueY = "close";
 
@@ -392,17 +421,15 @@ export default {
         bullet.circle.radius = 4;
         bullet.circle.fill = am4core.color("#fff");
         bullet.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-        bullet.map.setKey('id', 123) 
 
         bullet.events.on('hit', (ev) => {
           ev.event.stopPropagation()
           this.point = ev.target?.dataItem?.dataContext?.date
 
-          console.log(ev.target.dataItem.index);
-
           chart.series.values.forEach(element => {
             element.strokeOpacity = 0.5
           });
+          
           
           // reset styles circles
           clickedBullets.forEach(item => {
@@ -411,15 +438,25 @@ export default {
           })
           clickedBullets = []
           // init circles styles
-          ev.target.circle.fill = am4core.color("#67b7dc");
-          ev.target.circle.scale = 1.3
+          chart.series.values.forEach(element => {
+            element.strokeOpacity = 0.3
+            const bulElement = element.bulletsContainer.children.values?.[ev.target.dataItem.index]
+            if (!bulElement) {
+              return
+            }
+            bulElement.children.values[0].fill = element.stroke;
+            bulElement.children.values[0].scale = 1.3
+            clickedBullets.push(bulElement.children.values[0])
+          });
           // ev.target.circle.radius = 2;
 
-          clickedBullets.push(ev.target.circle)
+          // clickedBullets.push(ev.target.circle)
         })
       }
 
-      createSeries('value')
+      createSeries('value', '#000')
+      createSeries('systolic', 'red')
+      createSeries('diastolic', 'green')
 
       chart.events.on('hit', (ev) => {
         if (ev.event.cancelBubble) {
@@ -447,8 +484,12 @@ export default {
           indicator = chart.tooltipContainer.createChild(am4core.Container);
           indicator.background.fill = am4core.color("#fff");
           indicator.background.fillOpacity = 0.8;
-          indicator.width = am4core.percent(100);
-          indicator.height = am4core.percent(100);
+          indicator.width = am4core.percent(50);
+          indicator.height = am4core.percent(50);
+          indicator.align = "center";
+          indicator.valign = "middle";
+          // indicator.x = am4core.percent(50);
+          // indicator.y = am4core.percent(50);
 
           var indicatorLabel = indicator.createChild(am4core.Label);
           indicatorLabel.text = "No data...";
@@ -463,7 +504,6 @@ export default {
       }
 
       chart.events.on("beforevalidated", (ev) => {
-        
         // check if there's data
         if (ev.target.data.length == 0) {
           showIndicator();
@@ -474,6 +514,11 @@ export default {
           this.point = ev.target.data?.[ev.target.data.length - 1].date
         }
 
+        chart.data.sort(function(a, b) {
+          return (a.date) - (b.date);
+        });
+
+        
         const conc = (pointsLength, startDatePoint, endDatePoint) => {
           let scale = 0
 
@@ -485,11 +530,43 @@ export default {
           console.log(koef);
           return scale
         }
-
-        const start = conc(ev.target.data.length, ev.target.data[0].date, ev.target.data[ev.target.data.length - 1].date)
-
-        // dateAxis.start = 0;
+        
       });
+
+      chart.events.on('ready', (ev) => {
+        // chart.series.values.forEach((element, groupIndex) => {
+          // const bulElement = element.bulletsContainer.children.values?.[groupIndex]
+
+          // element.bulletsContainer.children.values.forEach(bullet => {
+          //   this.allBulets.push({
+          //     ind: groupIndex,
+          //     bul: bullet
+          //   })
+          // })
+          // bulElement.children.values[0].fill = element.stroke;
+          // bulElement.children.values[0].scale = 1.3
+          // clickedBullets.push(bulElement.children.values[0])
+        // });
+        // dateAxis.start = 0.98;
+        // dateAxis.zoomToDates(
+        //   new Date(2021, 2, 23),
+        //   new Date(2021, 2, 23)
+        // );
+        // dateAxis.start = 0.98;
+        // dateAxis.end = 0.5;
+        dateAxis.keepSelection = true;
+        dateAxis.tooltip.disabled = true;
+        dateAxis.startLocation = 0.49;
+        dateAxis.endLocation = 0.51;
+        dateAxis.skipEmptyPeriods = true;
+
+        // dateAxis.zoomToDates(
+        //   new Date(2021, 2, 23, 14, 32),
+        //   new Date(2021, 2, 23, 14, 51)
+        // );
+        // dateAxis.start = 0.98;
+      })
+
       // ----------------
       // bullethover.properties.cursorOptions = am4core.MouseCursorStyle.grabbing;
       // Make a panning cursor
@@ -509,6 +586,21 @@ export default {
       chart.scrollbarX.disabled = true;
       chart.zoomOutButton.disabled = true;
       chart.swipeable = true;
+
+      const newData = {
+            close: 160,
+            date: this.$moment('2021-03-22T10:46:00').toDate(),
+            diastolic: 165,
+            open: 70,
+            systolic: 180,
+            value: 103
+          }
+          
+
+          // chart.addData(
+          //   newData
+          // );
+          // chart.invalidateData();
     }
   },
   beforeDestroy() {
