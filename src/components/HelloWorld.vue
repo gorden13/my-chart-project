@@ -294,11 +294,13 @@ export default {
           if (minStretchedScaleDate.isBefore(startBaseDate)) {
             console.log('Вышли за границы слева')
             chart.data = this.parseData()
+            // chart.validate()
           }
 
           if (maxStretchedScaleDate.isAfter(endBaseDate)) {
             console.log('Вышли за границы справа')
             chart.data = this.parseNewDate()
+            // chart.validate()
           }
       })
 
@@ -428,15 +430,20 @@ export default {
 
           chart.series.values.forEach(element => {
             element.strokeOpacity = 0.5
+
+            element.bulletsContainer.children.values.forEach(bullet => {
+              bullet.circle.fill = am4core.color("#fff")
+              bullet.circle.scale = 1
+            })
           });
           
           
           // reset styles circles
-          clickedBullets.forEach(item => {
-            item.fill = am4core.color("#fff")
-            item.scale = 1
-          })
-          clickedBullets = []
+          // clickedBullets.forEach(item => {
+          //   item.fill = am4core.color("#fff")
+          //   item.scale = 1
+          // })
+          // clickedBullets = []
           // init circles styles
           chart.series.values.forEach(element => {
             element.strokeOpacity = 0.3
@@ -446,7 +453,7 @@ export default {
             }
             bulElement.children.values[0].fill = element.stroke;
             bulElement.children.values[0].scale = 1.3
-            clickedBullets.push(bulElement.children.values[0])
+            // clickedBullets.push(bulElement.children.values[0])
           });
           // ev.target.circle.radius = 2;
 
