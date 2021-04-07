@@ -294,15 +294,17 @@ export default {
           if (minStretchedScaleDate.isBefore(startBaseDate)) {
             console.log('Вышли за границы слева')
             chart.data = this.parseData()
+            chart.validateData();
           }
 
           if (maxStretchedScaleDate.isAfter(endBaseDate)) {
             console.log('Вышли за границы справа')
             chart.data = this.parseNewDate()
+            chart.validateData();
           }
       })
 
-      dateAxis.events.on('rangechangeended', (ev) => {
+      dateAxis.events.on('startchanged', (ev) => {
         setTimeout(() => {
           //последняя точка
           const lastPoint = this.$moment(this.point)
