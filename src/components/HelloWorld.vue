@@ -13,7 +13,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4lang_ru_RU from "@amcharts/amcharts4/lang/ru_RU";
 
-am4core.useTheme(am4themes_animated);
+// am4core.useTheme(am4themes_animated);
 
 import result from '/data.json'
 
@@ -149,7 +149,7 @@ export default {
     newRender () {
 
       // Themes begin
-      am4core.useTheme(am4themes_animated);
+      // am4core.useTheme(am4themes_animated);
       // Themes end
 
       // Create chart instance
@@ -305,7 +305,16 @@ export default {
       })
 
       dateAxis.events.on('rangechangeended', (ev) => {
-        setTimeout(() => {
+        // setTimeout(() => {
+
+          let axis = ev.target;
+          let start = axis.getPositionLabel(axis.start);
+          let end = axis.getPositionLabel(axis.end);
+
+          // let start1 = new Date(ev.target.minZoomed);
+          // let end1 = new Date(ev.target.maxZoomed);
+          console.log("New range: " + start + " -- " + end);
+          // console.log("New range: " + start1 + " -- " + end1);
           //последняя точка
           const lastPoint = this.$moment(this.point)
           //дата начала/конца базовой видимой шалы
@@ -325,7 +334,7 @@ export default {
             // this.$store.commit('monitoringv2/SET_LEGEND')
           // }
 
-        }, 300)
+        // }, 300)
       })
 
       // Create axis ranges for weekends
@@ -429,11 +438,11 @@ export default {
           this.point = ev.target?.dataItem?.dataContext?.date
 
           chart.series.values.forEach(element => {
-            element.strokeOpacity = 0.5
+            element.strokeOpacity = 1
 
             element.bulletsContainer.children.values.forEach(bullet => {
-              bullet.circle.fill = am4core.color("#fff")
-              bullet.circle.scale = 1
+              bullet.children.values[0].fill = am4core.color("#fff")
+              bullet.children.values[0].scale = 1
             })
           });
           
@@ -469,15 +478,14 @@ export default {
         if (ev.event.cancelBubble) {
           return
         }
-        // reset styles circles
-        clickedBullets.forEach(item => {
-          item.fill = am4core.color("#fff")
-          item.scale = 1
-        })
-        clickedBullets = []
 
         chart.series.values.forEach(element => {
           element.strokeOpacity = 1
+
+          element.bulletsContainer.children.values.forEach(bullet => {
+            bullet.children.values[0].fill = am4core.color("#fff")
+            bullet.children.values[0].scale = 1
+          })
         });
       })
 
