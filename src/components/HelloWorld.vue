@@ -4,6 +4,12 @@
     </div>
     <div><b>{{ getFormattedDate }}</b></div>
     <div style="margin-top: 20px; font-size:25px; color: red"><b>{{ getFormattedDateNew }}</b></div>
+    <!-- <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAnElEQVR42u3RAQ0AAAgDIE1u9FvDOahAJzXFGS1ECEKEIEQIQoQgRIgQIQgRghAhCBGCECEIQYgQhAhBiBCECEEIQoQgRAhChCBECEIQIgQhQhAiBCFCEIIQIQgRghAhCBGCEIQIQYgQhAhBiBCEIEQIQoQgRAhChCAEIUIQIgQhQhAiBCEIEYIQIQgRghAhCBEiRAhChCBECEK+W0L3+TnU7375AAAAAElFTkSuQmCC"
+      download="myImage.png"
+      target="_blank"
+    >
+      Download
+    </a> -->
   </div>
 </template>
 
@@ -20,7 +26,7 @@ import result from '/data.json'
 export default {
   name: 'HelloWorld',
   data: () => ({
-    points: result?.['pressure'] || [],
+    points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
     point: null,
     clickedBullets: [],
@@ -166,6 +172,8 @@ export default {
       var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
+      // valueAxis.rangeChangeDuration = 5000;
+
       valueAxis.tooltip.disabled = true;
       valueAxis.extraMax = 0.05
       valueAxis.extraMin = 0.05
@@ -284,6 +292,7 @@ export default {
       // dateAxis.renderer.labels.template.location = 0;
 
       chart.events.on('up', (ev) => {
+        console.log('mouseup');
           //дата начала всей шкалы
           const startBaseDate = this.$moment(ev.target.xAxes.values[0]._minReal)
           const endBaseDate = this.$moment(ev.target.xAxes.values[0]._maxReal)
@@ -293,13 +302,13 @@ export default {
 
           if (minStretchedScaleDate.isBefore(startBaseDate)) {
             console.log('Вышли за границы слева')
-            chart.data = this.parseData()
+            // chart.data = this.parseData()
             // chart.validate()
           }
 
           if (maxStretchedScaleDate.isAfter(endBaseDate)) {
             console.log('Вышли за границы справа')
-            chart.data = this.parseNewDate()
+            // chart.data = this.parseNewDate()
             // chart.validate()
           }
       })
@@ -423,6 +432,8 @@ export default {
         series.strokeWidth = 2;
         series.minBulletDistance = 15;
         series.showOnInit = false;
+        series.hiddenState.transitionDuration = 1000;
+        series.hiddenState.transitionEasing = am4core.ease.elasticInOut;
         // series.dataFields.openValueY = "open";
         // series.dataFields.closeValueY = "close";
 
@@ -468,13 +479,18 @@ export default {
 
           // clickedBullets.push(ev.target.circle)
         })
+
+        return series
       }
 
-      createSeries('value', '#000')
-      createSeries('systolic', 'red')
-      createSeries('diastolic', 'green')
+      const seriesArray = []
+
+      seriesArray.push(createSeries('value', '#000'))
+      seriesArray.push(createSeries('systolic', 'red'))
+      seriesArray.push(createSeries('diastolic', 'green'))
 
       chart.events.on('hit', (ev) => {
+        console.log('chartClick');
         if (ev.event.cancelBubble) {
           return
         }
@@ -529,24 +545,32 @@ export default {
           this.point = ev.target.data?.[ev.target.data.length - 1].date
         }
 
-        chart.data.sort(function(a, b) {
-          return (a.date) - (b.date);
-        });
-
-        
-        const conc = (pointsLength, startDatePoint, endDatePoint) => {
-          let scale = 0
-
-          const duration = this.$moment.duration(this.$moment(endDatePoint).diff(this.$moment(startDatePoint))).asMinutes()
-          console.log(duration);
-
-          const koef = pointsLength / duration
-
-          console.log(koef);
-          return scale
-        }
+        // chart.data.sort(function(a, b) {
+        //   return (a.date) - (b.date);
+        // })
         
       });
+
+      chart.events.on('beforedatavalidated', (ev) => {
+        if (chart.isReady()) {
+          console.log('data validated');
+          ev.target.data.unshift({
+            date: this.$moment('2021-03-23T14:25:00').toDate(),
+            value: 80,
+            systolic: 67,
+            diastolic: 77,
+            open: 70,
+            close: 120
+          })
+          // chart.disabled = true
+          chart.cursor.behavior = 'none'
+        }
+      })
+
+      setTimeout(() => {
+        chart.invalidateData()
+      }, 5000)
+
 
       chart.events.on('ready', (ev) => {
         // chart.series.values.forEach((element, groupIndex) => {
@@ -567,13 +591,13 @@ export default {
         //   new Date(2021, 2, 23),
         //   new Date(2021, 2, 23)
         // );
-        // dateAxis.start = 0.98;
+        dateAxis.start = 0;
         // dateAxis.end = 0.5;
         dateAxis.keepSelection = true;
         dateAxis.tooltip.disabled = true;
         dateAxis.startLocation = 0.49;
         dateAxis.endLocation = 0.51;
-        dateAxis.skipEmptyPeriods = true;
+        // dateAxis.skipEmptyPeriods = true;
 
         // dateAxis.zoomToDates(
         //   new Date(2021, 2, 23, 14, 32),
@@ -589,12 +613,13 @@ export default {
       cursor.behavior = "panX";
       chart.cursor = cursor
       // chart.cursor.xAxis = dateAxis;
-      // chart.cursor.snapToSeries = series;
+      // chart.cursor.snapToSeries = seriesArray;
       cursor.lineX.disabled = true;
       chart.cursor.opacity = 0;
       chart.cursor.lineY.opacity = 0;
       chart.cursor.lineX.opacity = 0;
       chart.scrollbarX = new am4core.Scrollbar();
+      chart.scrollbarX.animationDuration = 5000;
       // chart.scrollbarX.events.on('wheel', (ev) => {
       //   console.log(ev);
       // })

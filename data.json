@@ -162,6 +162,54 @@
             "message": null
         }
     ],
+    "test2": [
+        {
+            "date": {
+                "from": "2021-03-23T14:37:00",
+                "to": "2021-03-23T14:37:59"
+            },
+            "average": {
+                "single": 103,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 180,
+                "single": 180,
+                "diapason": null,
+                "yaxis": 180
+            },
+            "diastolic": {
+                "yAxis": 65,
+                "single": 65,
+                "diapason": null,
+                "yaxis": 65
+            },
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-03-23T14:46:00",
+                "to": "2021-03-23T14:46:59"
+            },
+            "average": {
+                "single": 100,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 128,
+                "single": 128,
+                "diapason": null,
+                "yaxis": 128
+            },
+            "diastolic": {
+                "yAxis": 86,
+                "single": 86,
+                "diapason": null,
+                "yaxis": 86
+            },
+            "message": null
+        }
+    ],
     "pressure": [
         {
             "date": {
