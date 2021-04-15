@@ -186,10 +186,10 @@ export default {
       // valueAxis.rangeChangeDuration = 5000;
 
       valueAxis.tooltip.disabled = true;
-      valueAxis.extraMax = 0.05
-      valueAxis.extraMin = 0.05
+      // valueAxis.extraMax = 0.05
+      // valueAxis.extraMin = 0.05
       // valueAxis.start = 0
-      // valueAxis.min = 0;
+      valueAxis.min = 0;
       // valueAxis.renderer.gridContainer.zIndex = 1;
       valueAxis.cursorTooltipEnabled = false;
 
