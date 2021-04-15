@@ -402,7 +402,7 @@ export default {
         triangle.direction = "bottom";
         // triangle.propertyFields.fill = "color";
         // triangle.propertyFields.fillOpacity = "opacity";
-        triangle.fillOpacity = 1;
+        triangle.fillOpacity = 0;
         triangle.fill = am4core.color("#0096C8");
         triangle.stroke = am4core.color("#0096C8");
         // triangle.disabled = true
@@ -419,10 +419,13 @@ export default {
 
         // Add slice click event
         // var currentSlice;
-        series.events.on("hit", function(ev) {
+        series.columns.template.events.on("hit", function(ev) {
           ev.event.stopPropagation()
           // triangle.disabled = false
-          ev.target.bullets.values[0].children.values[0].fillOpacity = 1
+          ev.target.dataItem.bullets.each((id, bullet) => {
+            // bullet.fillOpacity = 1
+            bullet.children.values[0].fillOpacity = 1
+          })
           // console.log(ev.target.bullets.values[0].children.values[0].fillOpacity);
           // if (currentSlice) {
           //   currentSlice.tooltip.hide();
@@ -456,8 +459,8 @@ export default {
           element.strokeOpacity = 1
 
           element.bulletsContainer.children.values.forEach(bullet => {
-            bullet.children.values[0].fill = am4core.color("#fff")
-            bullet.children.values[0].scale = 1
+            bullet.children.values[0].fillOpacity = 0
+            // bullet.children.values[0].scale = 1
           })
         });
       })
