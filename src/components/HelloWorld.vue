@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div class="hello" ref="chartdiv">
     </div>
     <div><b>{{ getFormattedDate }}</b></div>
@@ -19,7 +19,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4lang_ru_RU from "@amcharts/amcharts4/lang/ru_RU";
 
-// am4core.useTheme(am4themes_animated);
+am4core.useTheme(am4themes_animated);
 
 import result from '/data.json'
 
@@ -28,6 +28,7 @@ export default {
   data: () => ({
     points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
+    barPoints: result?.['pulse'] || [],
     point: null,
     clickedBullets: [],
     lastDate: null,
@@ -152,6 +153,14 @@ export default {
       // console.log(data);
       // return data
     },
+    parseBarData(arr) {
+      return this.barPoints.map(item => {
+        return {
+          date: this.$moment(item.date?.from).toDate(),
+          value: item.average,
+        }
+      });
+    },
     newRender () {
 
       // Themes begin
@@ -163,7 +172,9 @@ export default {
       chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
-      chart.data = this.parseData()
+      // chart.data = this.parseData()
+
+      chart.data = this.parseBarData()
 
       // Set input format for the dates
       // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -226,92 +237,32 @@ export default {
       // chart.paddingLeft = 20
 
       // при минутном
-      dateAxis.dateFormats.setKey("minute", "HH:mm");
-      dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
-      dateAxis.baseInterval = {
-        timeUnit: "minute",
-        count: 5
-      };
-      dateAxis.renderer.minGridDistance = 50;
-      dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.startLocation = -0.3;
-      // dateAxis.endLocation = 1.3;
+      // dateAxis.dateFormats.setKey("minute", "HH:mm");
+      // dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "minute",
+      //   count: 5
+      // };
+      // dateAxis.renderer.minGridDistance = 40;
+      // dateAxis.renderer.grid.template.location = 0;
+
       // dateAxis.start = 0.98
-      
-      // dateAxis.end = 0.02;
-      dateAxis.renderer.labels.template.location = 0;
 
-      
-
-      // при часовом этот набор
-      // dateAxis.dateFormats.setKey("hour", "HH:mm");
-      // dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
-      // dateAxis.baseInterval = {
-      //   timeUnit: "hour",
-      //   count: 1
-      // };
-      // dateAxis.renderer.minGridDistance = 75;
-      // dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.start = 0.5;
-      // dateAxis.renderer.labels.template.location = 0.0001;
-
-      // при дневном
-      // dateAxis.dateFormats.setKey("day", "dd");
-      // dateAxis.periodChangeDateFormats.setKey("day", "dd");
-      // dateAxis.baseInterval = {
-      //   timeUnit: "day",
-      //   count: 1
-      // };
-      // dateAxis.renderer.minGridDistance = 75;
-      // dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.start = 0.5;
-      // dateAxis.renderer.labels.template.location = 0.0001;
-
-      // при месячном
-      // dateAxis.dateFormats.setKey("month", "MMMM");
-      // dateAxis.periodChangeDateFormats.setKey("month", "MMMM");
-      // dateAxis.baseInterval = {
-      //   timeUnit: "month",
-      //   count: 1
-      // };
-      // dateAxis.renderer.minGridDistance = 50;
-      // dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.start = 0;
-      // dateAxis.renderer.labels.template.location = 0;
-
-      // при годовом
-      // dateAxis.dateFormats.setKey("year", "yyyy");
-      // dateAxis.periodChangeDateFormats.setKey("year", "yyyy");
-      // dateAxis.baseInterval = {
-      //   timeUnit: "year",
-      //   count: 1
-      // };
-      // dateAxis.renderer.minGridDistance = 50;
-      // dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.start = 0;
-      // dateAxis.renderer.labels.template.location = 0;
-
-      chart.events.on('up', (ev) => {
-        console.log('mouseup');
-          //дата начала всей шкалы
-          const startBaseDate = this.$moment(ev.target.xAxes.values[0]._minReal)
-          const endBaseDate = this.$moment(ev.target.xAxes.values[0]._maxReal)
-          //дата начала/конца растянутой базовой шкалы
-          const minStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._minZoomed)
-          const maxStretchedScaleDate = this.$moment(ev.target.xAxes.values[0]._maxZoomed)
-
-          if (minStretchedScaleDate.isBefore(startBaseDate)) {
-            console.log('Вышли за границы слева')
-            // chart.data = this.parseData()
-            // chart.validate()
-          }
-
-          if (maxStretchedScaleDate.isAfter(endBaseDate)) {
-            console.log('Вышли за границы справа')
-            // chart.data = this.parseNewDate()
-            // chart.validate()
-          }
-      })
+      dateAxis.dateFormats.setKey("hour", "HH:mm");
+      dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
+      dateAxis.baseInterval = {
+        timeUnit: "hour",
+        count: 1
+      };
+      dateAxis.renderer.minGridDistance = 20;
+      // dateAxis.renderer.grid.template.location = 0.5;
+      dateAxis.start = 1;
+      // dateAxis.renderer.labels.template.location = 0.5;
+      dateAxis.groupData = true;
+      // dateAxis.skipEmptyPeriods = true;
+      // dateAxis.groupCount = 400;
+      dateAxis.keepSelection = true;
+      dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
 
       dateAxis.events.on('rangechangeended', (ev) => {
         // setTimeout(() => {
@@ -345,74 +296,6 @@ export default {
 
         // }, 300)
       })
-
-      // Create axis ranges for weekends
-      // dateAxis.events.on("datavalidated", (ev) => {
-      //   const axis = ev.target;
-      //   const start = this.$moment(axis.positionToDate(0));
-      //   const end = this.$moment(axis.positionToDate(1));
-      //   console.log(start, end);
-
-      //   // Get start date
-      //   let current = start.clone().minutes(0).seconds(0);
-
-      //   while(current.isBefore(end)) {
-      //     if (current.hours() == 0 && current.minutes() == 0) {
-      //       // Create a range
-      //       var range = axis.axisRanges.create();
-      //       range.date = current.toDate();
-      //       range.endDate = current.clone().add('minute', 1).toDate();
-      //       range.axisFill.fill = am4core.color("#396478");
-      //       range.axisFill.fillOpacity = 0.2;
-      //       range.grid.strokeOpacity = 0;
-      //     }
-      //     current.add('hour', 1)
-      //   }
-        
-      // });
-      
-      // при месячном это
-      // dateAxis.gridIntervals.setAll(gridIntervals);
-      // dateAxis.baseInterval = {
-      //   timeUnit: "month",
-      //   count: 1
-      // };
-      // dateAxis.dateFormats.setKey("month", "MMMM");
-      // dateAxis.periodChangeDateFormats.setKey("month", "MMMM");
-      // dateAxis.renderer.minGridDistance = 50;
-      // dateAxis.startLocation = 0.4;
-      // dateAxis.endLocation = 0.6;
-      // dateAxis.renderer.grid.template.location = 0;
-      // dateAxis.renderer.labels.template.location = 0;
-
-     
-      
-
-      // dateAxis.adapter.add("verticalCenter", function() {
-      //   console.log('center');
-      // });
-      // dateAxis.renderer.grid.template.location = 0.5;
-      // dateAxis.startLocation = 0.5;
-      // dateAxis.endLocation = 0.5;
-
-      // dateAxis.renderer.minGridDistance = 75;
-      // dateAxis.renderer.maxGridDistance = 100;
-      // dateAxis.renderer.grid.template.location = 0.5;
-      // dateAxis.startLocation = 0.1;
-      // dateAxis.renderer.labels.template.location = 0.5;
-      // dateAxis.baseInterval = {
-      //   timeUnit: "1",
-      //   count: 'month'
-      // };
-      
-      // убирает дырки
-      // dateAxis.skipEmptyPeriods = true;
-      // Create value axis break
-      // var axisBreak = valueAxis.axisBreaks.create();
-      // axisBreak.startValue = 84;
-      // axisBreak.endValue = 86;
-      // axisBreak.breakSize = 0.05;
-      // axisBreak.fill = am4core.color("#396478");
 
       // var range = valueAxis.axisRanges.create();
       // range.value = 85;
@@ -485,9 +368,24 @@ export default {
 
       const seriesArray = []
 
-      seriesArray.push(createSeries('value', '#000'))
-      seriesArray.push(createSeries('systolic', 'red'))
-      seriesArray.push(createSeries('diastolic', 'green'))
+      // seriesArray.push(createSeries('value', '#000'))
+      // seriesArray.push(createSeries('systolic', 'red'))
+      // seriesArray.push(createSeries('diastolic', 'green'))
+
+      const createBarSeries = () => {
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.valueY = "value";
+        series.dataFields.dateX = "date";
+        // series.minBulletDistance = 0;
+
+        var columnTemplate = series.columns.template;
+        // columnTemplate.strokeWidth = 5;
+        columnTemplate.strokeOpacity = 1;
+        columnTemplate.width = 10;
+        columnTemplate.fill = am4core.color("#0096C8");
+      }
+
+      createBarSeries()
 
       chart.events.on('hit', (ev) => {
         console.log('chartClick');
@@ -551,25 +449,23 @@ export default {
         
       });
 
-      chart.events.on('beforedatavalidated', (ev) => {
-        if (chart.isReady()) {
-          console.log('data validated');
-          ev.target.data.unshift({
-            date: this.$moment('2021-03-23T14:25:00').toDate(),
-            value: 80,
-            systolic: 67,
-            diastolic: 77,
-            open: 70,
-            close: 120
-          })
-          // chart.disabled = true
-          chart.cursor.behavior = 'none'
-        }
-      })
+      // chart.events.on('beforedatavalidated', (ev) => {
+      //   if (chart.isReady()) {
+      //     console.log('data validated');
+      //     ev.target.data.unshift({
+      //       date: this.$moment('2021-03-23T14:25:00').toDate(),
+      //       value: 80,
+      //       systolic: 67,
+      //       diastolic: 77,
+      //       open: 70,
+      //       close: 120
+      //     })
+      //   }
+      // })
 
-      setTimeout(() => {
-        chart.invalidateData()
-      }, 5000)
+      // setTimeout(() => {
+      //   chart.invalidateData()
+      // }, 5000)
 
 
       chart.events.on('ready', (ev) => {
@@ -591,12 +487,12 @@ export default {
         //   new Date(2021, 2, 23),
         //   new Date(2021, 2, 23)
         // );
-        dateAxis.start = 0;
+        // dateAxis.start = 0.99;
         // dateAxis.end = 0.5;
-        dateAxis.keepSelection = true;
         dateAxis.tooltip.disabled = true;
-        dateAxis.startLocation = 0.49;
-        dateAxis.endLocation = 0.51;
+        dateAxis.start = 1;
+        // dateAxis.startLocation = 0.49;
+        // dateAxis.endLocation = 0.51;
         // dateAxis.skipEmptyPeriods = true;
 
         // dateAxis.zoomToDates(
@@ -627,20 +523,15 @@ export default {
       chart.zoomOutButton.disabled = true;
       chart.swipeable = true;
 
-      const newData = {
-            close: 160,
-            date: this.$moment('2021-03-22T10:46:00').toDate(),
-            diastolic: 165,
-            open: 70,
-            systolic: 180,
-            value: 103
-          }
-          
+      // const newData = {
+      //   close: 160,
+      //   date: this.$moment('2021-03-22T10:46:00').toDate(),
+      //   diastolic: 165,
+      //   open: 70,
+      //   systolic: 180,
+      //   value: 103
+      // }
 
-          // chart.addData(
-          //   newData
-          // );
-          // chart.invalidateData();
     }
   },
   beforeDestroy() {
@@ -654,7 +545,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
-  width: 100%;
-  height: 500px;
+  width: 832px;
+  height: 300px;
+}
+
+.main {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 </style>

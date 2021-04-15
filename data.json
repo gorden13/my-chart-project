@@ -165,6 +165,29 @@
     "test2": [
         {
             "date": {
+                "from": "2021-03-17T09:59:00",
+                "to": "2021-03-17T09:59:59"
+            },
+            "average": {
+                "single": 91,
+                "diapason": null
+            },
+            "systolic": {
+                "yAxis": 122.0,
+                "single": 122,
+                "diapason": null,
+                "yaxis": 122.0
+            },
+            "diastolic": {
+                "yAxis": 76.0,
+                "single": 76,
+                "diapason": null,
+                "yaxis": 76.0
+            },
+            "message": null
+        },
+        {
+            "date": {
                 "from": "2021-03-23T14:37:00",
                 "to": "2021-03-23T14:37:59"
             },
@@ -173,16 +196,16 @@
                 "diapason": null
             },
             "systolic": {
-                "yAxis": 180,
+                "yAxis": 180.0,
                 "single": 180,
                 "diapason": null,
-                "yaxis": 180
+                "yaxis": 180.0
             },
             "diastolic": {
-                "yAxis": 65,
+                "yAxis": 65.0,
                 "single": 65,
                 "diapason": null,
-                "yaxis": 65
+                "yaxis": 65.0
             },
             "message": null
         },
@@ -196,16 +219,16 @@
                 "diapason": null
             },
             "systolic": {
-                "yAxis": 128,
+                "yAxis": 128.0,
                 "single": 128,
                 "diapason": null,
-                "yaxis": 128
+                "yaxis": 128.0
             },
             "diastolic": {
-                "yAxis": 86,
+                "yAxis": 86.0,
                 "single": 86,
                 "diapason": null,
-                "yaxis": 86
+                "yaxis": 86.0
             },
             "message": null
         }
@@ -1213,6 +1236,2777 @@
                 "diapason": null,
                 "yaxis": 76
             },
+            "message": null
+        }
+    ],
+
+    "pulse": [
+        {
+            "date": {
+                "from": "2021-02-10T14:50:00",
+                "to": "2021-02-10T14:50:59"
+            },
+            "parameter": {
+                "yAxis": 74.0,
+                "single": 74,
+                "diapason": null,
+                "yaxis": 74.0
+            },
+            "average": 74,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T14:51:00",
+                "to": "2021-02-10T14:51:59"
+            },
+            "parameter": {
+                "yAxis": 81.0,
+                "single": 81,
+                "diapason": null,
+                "yaxis": 81.0
+            },
+            "average": 81,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T14:58:00",
+                "to": "2021-02-10T14:58:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:05:00",
+                "to": "2021-02-10T15:05:59"
+            },
+            "parameter": {
+                "yAxis": 79.0,
+                "single": 79,
+                "diapason": null,
+                "yaxis": 79.0
+            },
+            "average": 79,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:09:00",
+                "to": "2021-02-10T15:09:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:14:00",
+                "to": "2021-02-10T15:14:59"
+            },
+            "parameter": {
+                "yAxis": 68.0,
+                "single": 68,
+                "diapason": null,
+                "yaxis": 68.0
+            },
+            "average": 68,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:18:00",
+                "to": "2021-02-10T15:18:59"
+            },
+            "parameter": {
+                "yAxis": 89.0,
+                "single": 89,
+                "diapason": null,
+                "yaxis": 89.0
+            },
+            "average": 89,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:25:00",
+                "to": "2021-02-10T15:25:59"
+            },
+            "parameter": {
+                "yAxis": 91.0,
+                "single": 91,
+                "diapason": null,
+                "yaxis": 91.0
+            },
+            "average": 91,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:29:00",
+                "to": "2021-02-10T15:29:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:34:00",
+                "to": "2021-02-10T15:34:59"
+            },
+            "parameter": {
+                "yAxis": 61.0,
+                "single": 61,
+                "diapason": null,
+                "yaxis": 61.0
+            },
+            "average": 61,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:39:00",
+                "to": "2021-02-10T15:39:59"
+            },
+            "parameter": {
+                "yAxis": 73.0,
+                "single": 73,
+                "diapason": null,
+                "yaxis": 73.0
+            },
+            "average": 73,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:44:00",
+                "to": "2021-02-10T15:44:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:50:00",
+                "to": "2021-02-10T15:50:59"
+            },
+            "parameter": {
+                "yAxis": 80.0,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80.0
+            },
+            "average": 80,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T15:58:00",
+                "to": "2021-02-10T15:58:59"
+            },
+            "parameter": {
+                "yAxis": 85.0,
+                "single": 85,
+                "diapason": null,
+                "yaxis": 85.0
+            },
+            "average": 85,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:02:00",
+                "to": "2021-02-10T16:02:59"
+            },
+            "parameter": {
+                "yAxis": 88.0,
+                "single": 88,
+                "diapason": null,
+                "yaxis": 88.0
+            },
+            "average": 88,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:09:00",
+                "to": "2021-02-10T16:09:59"
+            },
+            "parameter": {
+                "yAxis": 87.0,
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87.0
+            },
+            "average": 87,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:12:00",
+                "to": "2021-02-10T16:12:59"
+            },
+            "parameter": {
+                "yAxis": 79.0,
+                "single": 79,
+                "diapason": null,
+                "yaxis": 79.0
+            },
+            "average": 79,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:19:00",
+                "to": "2021-02-10T16:19:59"
+            },
+            "parameter": {
+                "yAxis": 87.0,
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87.0
+            },
+            "average": 87,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:22:00",
+                "to": "2021-02-10T16:22:59"
+            },
+            "parameter": {
+                "yAxis": 77.0,
+                "single": 77,
+                "diapason": null,
+                "yaxis": 77.0
+            },
+            "average": 77,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:27:00",
+                "to": "2021-02-10T16:27:59"
+            },
+            "parameter": {
+                "yAxis": 80.0,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80.0
+            },
+            "average": 80,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:32:00",
+                "to": "2021-02-10T16:32:59"
+            },
+            "parameter": {
+                "yAxis": 80.0,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80.0
+            },
+            "average": 80,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:40:00",
+                "to": "2021-02-10T16:40:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:45:00",
+                "to": "2021-02-10T16:45:59"
+            },
+            "parameter": {
+                "yAxis": 82.0,
+                "single": 82,
+                "diapason": null,
+                "yaxis": 82.0
+            },
+            "average": 82,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:46:00",
+                "to": "2021-02-10T16:46:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:51:00",
+                "to": "2021-02-10T16:51:59"
+            },
+            "parameter": {
+                "yAxis": 87.0,
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87.0
+            },
+            "average": 87,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T16:56:00",
+                "to": "2021-02-10T16:56:59"
+            },
+            "parameter": {
+                "yAxis": 82.0,
+                "single": 82,
+                "diapason": null,
+                "yaxis": 82.0
+            },
+            "average": 82,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:04:00",
+                "to": "2021-02-10T17:04:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:07:00",
+                "to": "2021-02-10T17:07:59"
+            },
+            "parameter": {
+                "yAxis": 72.0,
+                "single": 72,
+                "diapason": null,
+                "yaxis": 72.0
+            },
+            "average": 72,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:14:00",
+                "to": "2021-02-10T17:14:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:17:00",
+                "to": "2021-02-10T17:17:59"
+            },
+            "parameter": {
+                "yAxis": 88.0,
+                "single": 88,
+                "diapason": null,
+                "yaxis": 88.0
+            },
+            "average": 88,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:22:00",
+                "to": "2021-02-10T17:22:59"
+            },
+            "parameter": {
+                "yAxis": 73.0,
+                "single": 73,
+                "diapason": null,
+                "yaxis": 73.0
+            },
+            "average": 73,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:30:00",
+                "to": "2021-02-10T17:30:59"
+            },
+            "parameter": {
+                "yAxis": 87.0,
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87.0
+            },
+            "average": 87,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:35:00",
+                "to": "2021-02-10T17:35:59"
+            },
+            "parameter": {
+                "yAxis": 80.0,
+                "single": 80,
+                "diapason": null,
+                "yaxis": 80.0
+            },
+            "average": 80,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:38:00",
+                "to": "2021-02-10T17:38:59"
+            },
+            "parameter": {
+                "yAxis": 89.0,
+                "single": 89,
+                "diapason": null,
+                "yaxis": 89.0
+            },
+            "average": 89,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:43:00",
+                "to": "2021-02-10T17:43:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T17:52:00",
+                "to": "2021-02-10T17:52:59"
+            },
+            "parameter": {
+                "yAxis": 99.0,
+                "single": 99,
+                "diapason": null,
+                "yaxis": 99.0
+            },
+            "average": 99,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:12:00",
+                "to": "2021-02-10T18:12:59"
+            },
+            "parameter": {
+                "yAxis": 121.0,
+                "single": 121,
+                "diapason": null,
+                "yaxis": 121.0
+            },
+            "average": 121,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:02:00",
+                "to": "2021-02-10T18:02:59"
+            },
+            "parameter": {
+                "yAxis": 110.0,
+                "single": 110,
+                "diapason": null,
+                "yaxis": 110.0
+            },
+            "average": 110,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:15:00",
+                "to": "2021-02-10T18:15:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:23:00",
+                "to": "2021-02-10T18:23:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:28:00",
+                "to": "2021-02-10T18:28:59"
+            },
+            "parameter": {
+                "yAxis": 88.0,
+                "single": 88,
+                "diapason": null,
+                "yaxis": 88.0
+            },
+            "average": 88,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:32:00",
+                "to": "2021-02-10T18:32:59"
+            },
+            "parameter": {
+                "yAxis": 86.0,
+                "single": 86,
+                "diapason": null,
+                "yaxis": 86.0
+            },
+            "average": 86,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:37:00",
+                "to": "2021-02-10T18:37:59"
+            },
+            "parameter": {
+                "yAxis": 97.0,
+                "single": 97,
+                "diapason": null,
+                "yaxis": 97.0
+            },
+            "average": 97,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:41:00",
+                "to": "2021-02-10T18:41:59"
+            },
+            "parameter": {
+                "yAxis": 87.0,
+                "single": 87,
+                "diapason": null,
+                "yaxis": 87.0
+            },
+            "average": 87,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:49:00",
+                "to": "2021-02-10T18:49:59"
+            },
+            "parameter": {
+                "yAxis": 74.0,
+                "single": 74,
+                "diapason": null,
+                "yaxis": 74.0
+            },
+            "average": 74,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:52:00",
+                "to": "2021-02-10T18:52:59"
+            },
+            "parameter": {
+                "yAxis": 78.0,
+                "single": 78,
+                "diapason": null,
+                "yaxis": 78.0
+            },
+            "average": 78,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T18:56:00",
+                "to": "2021-02-10T18:56:59"
+            },
+            "parameter": {
+                "yAxis": 93.0,
+                "single": 93,
+                "diapason": null,
+                "yaxis": 93.0
+            },
+            "average": 93,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:06:00",
+                "to": "2021-02-10T19:06:59"
+            },
+            "parameter": {
+                "yAxis": 113.0,
+                "single": 113,
+                "diapason": null,
+                "yaxis": 113.0
+            },
+            "average": 113,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:07:00",
+                "to": "2021-02-10T19:07:59"
+            },
+            "parameter": {
+                "yAxis": 108.22,
+                "single": null,
+                "diapason": {
+                    "min": 106,
+                    "max": 111
+                },
+                "yaxis": 108.22222222222223
+            },
+            "average": 108,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:08:00",
+                "to": "2021-02-10T19:08:59"
+            },
+            "parameter": {
+                "yAxis": 106.58,
+                "single": null,
+                "diapason": {
+                    "min": 102,
+                    "max": 108
+                },
+                "yaxis": 106.58333333333333
+            },
+            "average": 106,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:09:00",
+                "to": "2021-02-10T19:09:59"
+            },
+            "parameter": {
+                "yAxis": 102.5,
+                "single": null,
+                "diapason": {
+                    "min": 92,
+                    "max": 108
+                },
+                "yaxis": 102.5
+            },
+            "average": 102,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:10:00",
+                "to": "2021-02-10T19:10:59"
+            },
+            "parameter": {
+                "yAxis": 101.7,
+                "single": null,
+                "diapason": {
+                    "min": 96,
+                    "max": 105
+                },
+                "yaxis": 101.7
+            },
+            "average": 101,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:11:00",
+                "to": "2021-02-10T19:11:59"
+            },
+            "parameter": {
+                "yAxis": 105.38,
+                "single": null,
+                "diapason": {
+                    "min": 101,
+                    "max": 112
+                },
+                "yaxis": 105.38461538461539
+            },
+            "average": 105,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:13:00",
+                "to": "2021-02-10T19:13:59"
+            },
+            "parameter": {
+                "yAxis": 107.67,
+                "single": null,
+                "diapason": {
+                    "min": 106,
+                    "max": 109
+                },
+                "yaxis": 107.66666666666667
+            },
+            "average": 107,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:14:00",
+                "to": "2021-02-10T19:14:59"
+            },
+            "parameter": {
+                "yAxis": 111.0,
+                "single": null,
+                "diapason": {
+                    "min": 102,
+                    "max": 118
+                },
+                "yaxis": 111.0
+            },
+            "average": 111,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:15:00",
+                "to": "2021-02-10T19:15:59"
+            },
+            "parameter": {
+                "yAxis": 105.4,
+                "single": null,
+                "diapason": {
+                    "min": 103,
+                    "max": 108
+                },
+                "yaxis": 105.4
+            },
+            "average": 105,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:16:00",
+                "to": "2021-02-10T19:16:59"
+            },
+            "parameter": {
+                "yAxis": 94.83,
+                "single": null,
+                "diapason": {
+                    "min": 90,
+                    "max": 99
+                },
+                "yaxis": 94.83333333333333
+            },
+            "average": 94,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:17:00",
+                "to": "2021-02-10T19:17:59"
+            },
+            "parameter": {
+                "yAxis": 94.92,
+                "single": null,
+                "diapason": {
+                    "min": 90,
+                    "max": 102
+                },
+                "yaxis": 94.91666666666667
+            },
+            "average": 94,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:18:00",
+                "to": "2021-02-10T19:18:59"
+            },
+            "parameter": {
+                "yAxis": 101.62,
+                "single": null,
+                "diapason": {
+                    "min": 92,
+                    "max": 107
+                },
+                "yaxis": 101.61538461538461
+            },
+            "average": 101,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:22:00",
+                "to": "2021-02-10T19:22:59"
+            },
+            "parameter": {
+                "yAxis": 142.0,
+                "single": 142,
+                "diapason": null,
+                "yaxis": 142.0
+            },
+            "average": 142,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:23:00",
+                "to": "2021-02-10T19:23:59"
+            },
+            "parameter": {
+                "yAxis": 126.33,
+                "single": null,
+                "diapason": {
+                    "min": 110,
+                    "max": 143
+                },
+                "yaxis": 126.33333333333333
+            },
+            "average": 126,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:24:00",
+                "to": "2021-02-10T19:24:59"
+            },
+            "parameter": {
+                "yAxis": 111.78,
+                "single": null,
+                "diapason": {
+                    "min": 107,
+                    "max": 117
+                },
+                "yaxis": 111.77777777777777
+            },
+            "average": 111,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:25:00",
+                "to": "2021-02-10T19:25:59"
+            },
+            "parameter": {
+                "yAxis": 137.83,
+                "single": null,
+                "diapason": {
+                    "min": 107,
+                    "max": 149
+                },
+                "yaxis": 137.83333333333334
+            },
+            "average": 137,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:26:00",
+                "to": "2021-02-10T19:26:59"
+            },
+            "parameter": {
+                "yAxis": 150.2,
+                "single": null,
+                "diapason": {
+                    "min": 130,
+                    "max": 165
+                },
+                "yaxis": 150.2
+            },
+            "average": 150,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:27:00",
+                "to": "2021-02-10T19:27:59"
+            },
+            "parameter": {
+                "yAxis": 115.75,
+                "single": null,
+                "diapason": {
+                    "min": 106,
+                    "max": 126
+                },
+                "yaxis": 115.75
+            },
+            "average": 115,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:28:00",
+                "to": "2021-02-10T19:28:59"
+            },
+            "parameter": {
+                "yAxis": 108.08,
+                "single": null,
+                "diapason": {
+                    "min": 101,
+                    "max": 116
+                },
+                "yaxis": 108.08333333333333
+            },
+            "average": 108,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:29:00",
+                "to": "2021-02-10T19:29:59"
+            },
+            "parameter": {
+                "yAxis": 131.08,
+                "single": null,
+                "diapason": {
+                    "min": 115,
+                    "max": 140
+                },
+                "yaxis": 131.08333333333334
+            },
+            "average": 131,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:30:00",
+                "to": "2021-02-10T19:30:59"
+            },
+            "parameter": {
+                "yAxis": 128.25,
+                "single": null,
+                "diapason": {
+                    "min": 114,
+                    "max": 136
+                },
+                "yaxis": 128.25
+            },
+            "average": 128,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:31:00",
+                "to": "2021-02-10T19:31:59"
+            },
+            "parameter": {
+                "yAxis": 121.0,
+                "single": null,
+                "diapason": {
+                    "min": 111,
+                    "max": 128
+                },
+                "yaxis": 121.0
+            },
+            "average": 121,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:32:00",
+                "to": "2021-02-10T19:32:59"
+            },
+            "parameter": {
+                "yAxis": 139.38,
+                "single": null,
+                "diapason": {
+                    "min": 122,
+                    "max": 154
+                },
+                "yaxis": 139.375
+            },
+            "average": 139,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:33:00",
+                "to": "2021-02-10T19:33:59"
+            },
+            "parameter": {
+                "yAxis": 135.0,
+                "single": null,
+                "diapason": {
+                    "min": 119,
+                    "max": 154
+                },
+                "yaxis": 135.0
+            },
+            "average": 135,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:34:00",
+                "to": "2021-02-10T19:34:59"
+            },
+            "parameter": {
+                "yAxis": 121.42,
+                "single": null,
+                "diapason": {
+                    "min": 102,
+                    "max": 132
+                },
+                "yaxis": 121.41666666666667
+            },
+            "average": 121,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:35:00",
+                "to": "2021-02-10T19:35:59"
+            },
+            "parameter": {
+                "yAxis": 116.0,
+                "single": null,
+                "diapason": {
+                    "min": 110,
+                    "max": 119
+                },
+                "yaxis": 116.0
+            },
+            "average": 116,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:36:00",
+                "to": "2021-02-10T19:36:59"
+            },
+            "parameter": {
+                "yAxis": 133.25,
+                "single": null,
+                "diapason": {
+                    "min": 120,
+                    "max": 148
+                },
+                "yaxis": 133.25
+            },
+            "average": 133,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:37:00",
+                "to": "2021-02-10T19:37:59"
+            },
+            "parameter": {
+                "yAxis": 152.5,
+                "single": null,
+                "diapason": {
+                    "min": 135,
+                    "max": 166
+                },
+                "yaxis": 152.5
+            },
+            "average": 152,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:38:00",
+                "to": "2021-02-10T19:38:59"
+            },
+            "parameter": {
+                "yAxis": 128.0,
+                "single": null,
+                "diapason": {
+                    "min": 121,
+                    "max": 137
+                },
+                "yaxis": 128.0
+            },
+            "average": 128,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:39:00",
+                "to": "2021-02-10T19:39:59"
+            },
+            "parameter": {
+                "yAxis": 125.08,
+                "single": null,
+                "diapason": {
+                    "min": 117,
+                    "max": 147
+                },
+                "yaxis": 125.08333333333333
+            },
+            "average": 125,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:40:00",
+                "to": "2021-02-10T19:40:59"
+            },
+            "parameter": {
+                "yAxis": 150.58,
+                "single": null,
+                "diapason": {
+                    "min": 144,
+                    "max": 154
+                },
+                "yaxis": 150.58333333333334
+            },
+            "average": 150,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:41:00",
+                "to": "2021-02-10T19:41:59"
+            },
+            "parameter": {
+                "yAxis": 149.67,
+                "single": null,
+                "diapason": {
+                    "min": 134,
+                    "max": 158
+                },
+                "yaxis": 149.66666666666666
+            },
+            "average": 149,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:42:00",
+                "to": "2021-02-10T19:42:59"
+            },
+            "parameter": {
+                "yAxis": 126.42,
+                "single": null,
+                "diapason": {
+                    "min": 118,
+                    "max": 130
+                },
+                "yaxis": 126.41666666666667
+            },
+            "average": 126,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:43:00",
+                "to": "2021-02-10T19:43:59"
+            },
+            "parameter": {
+                "yAxis": 123.17,
+                "single": null,
+                "diapason": {
+                    "min": 111,
+                    "max": 135
+                },
+                "yaxis": 123.16666666666667
+            },
+            "average": 123,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:44:00",
+                "to": "2021-02-10T19:44:59"
+            },
+            "parameter": {
+                "yAxis": 116.58,
+                "single": null,
+                "diapason": {
+                    "min": 114,
+                    "max": 121
+                },
+                "yaxis": 116.58333333333333
+            },
+            "average": 116,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:45:00",
+                "to": "2021-02-10T19:45:59"
+            },
+            "parameter": {
+                "yAxis": 115.0,
+                "single": null,
+                "diapason": {
+                    "min": 107,
+                    "max": 123
+                },
+                "yaxis": 115.0
+            },
+            "average": 115,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:46:00",
+                "to": "2021-02-10T19:46:59"
+            },
+            "parameter": {
+                "yAxis": 143.22,
+                "single": null,
+                "diapason": {
+                    "min": 129,
+                    "max": 154
+                },
+                "yaxis": 143.22222222222223
+            },
+            "average": 143,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:47:00",
+                "to": "2021-02-10T19:47:59"
+            },
+            "parameter": {
+                "yAxis": 154.7,
+                "single": null,
+                "diapason": {
+                    "min": 144,
+                    "max": 172
+                },
+                "yaxis": 154.7
+            },
+            "average": 154,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:48:00",
+                "to": "2021-02-10T19:48:59"
+            },
+            "parameter": {
+                "yAxis": 127.17,
+                "single": null,
+                "diapason": {
+                    "min": 116,
+                    "max": 141
+                },
+                "yaxis": 127.16666666666667
+            },
+            "average": 127,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:49:00",
+                "to": "2021-02-10T19:49:59"
+            },
+            "parameter": {
+                "yAxis": 116.83,
+                "single": null,
+                "diapason": {
+                    "min": 114,
+                    "max": 121
+                },
+                "yaxis": 116.83333333333333
+            },
+            "average": 116,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:50:00",
+                "to": "2021-02-10T19:50:59"
+            },
+            "parameter": {
+                "yAxis": 125.17,
+                "single": null,
+                "diapason": {
+                    "min": 120,
+                    "max": 128
+                },
+                "yaxis": 125.16666666666667
+            },
+            "average": 125,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:51:00",
+                "to": "2021-02-10T19:51:59"
+            },
+            "parameter": {
+                "yAxis": 127.25,
+                "single": null,
+                "diapason": {
+                    "min": 126,
+                    "max": 128
+                },
+                "yaxis": 127.25
+            },
+            "average": 127,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:52:00",
+                "to": "2021-02-10T19:52:59"
+            },
+            "parameter": {
+                "yAxis": 125.8,
+                "single": null,
+                "diapason": {
+                    "min": 120,
+                    "max": 128
+                },
+                "yaxis": 125.8
+            },
+            "average": 125,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:53:00",
+                "to": "2021-02-10T19:53:59"
+            },
+            "parameter": {
+                "yAxis": 129.71,
+                "single": null,
+                "diapason": {
+                    "min": 120,
+                    "max": 135
+                },
+                "yaxis": 129.71428571428572
+            },
+            "average": 129,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:54:00",
+                "to": "2021-02-10T19:54:59"
+            },
+            "parameter": {
+                "yAxis": 132.33,
+                "single": null,
+                "diapason": {
+                    "min": 129,
+                    "max": 137
+                },
+                "yaxis": 132.33333333333334
+            },
+            "average": 132,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:55:00",
+                "to": "2021-02-10T19:55:59"
+            },
+            "parameter": {
+                "yAxis": 134.5,
+                "single": null,
+                "diapason": {
+                    "min": 132,
+                    "max": 142
+                },
+                "yaxis": 134.5
+            },
+            "average": 134,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:56:00",
+                "to": "2021-02-10T19:56:59"
+            },
+            "parameter": {
+                "yAxis": 132.92,
+                "single": null,
+                "diapason": {
+                    "min": 130,
+                    "max": 140
+                },
+                "yaxis": 132.91666666666666
+            },
+            "average": 132,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:57:00",
+                "to": "2021-02-10T19:57:59"
+            },
+            "parameter": {
+                "yAxis": 128.67,
+                "single": null,
+                "diapason": {
+                    "min": 123,
+                    "max": 133
+                },
+                "yaxis": 128.66666666666666
+            },
+            "average": 128,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:58:00",
+                "to": "2021-02-10T19:58:59"
+            },
+            "parameter": {
+                "yAxis": 121.17,
+                "single": null,
+                "diapason": {
+                    "min": 117,
+                    "max": 125
+                },
+                "yaxis": 121.16666666666667
+            },
+            "average": 121,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T19:59:00",
+                "to": "2021-02-10T19:59:59"
+            },
+            "parameter": {
+                "yAxis": 122.67,
+                "single": null,
+                "diapason": {
+                    "min": 120,
+                    "max": 125
+                },
+                "yaxis": 122.66666666666667
+            },
+            "average": 122,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:00:00",
+                "to": "2021-02-10T20:00:59"
+            },
+            "parameter": {
+                "yAxis": 124.67,
+                "single": null,
+                "diapason": {
+                    "min": 118,
+                    "max": 131
+                },
+                "yaxis": 124.66666666666667
+            },
+            "average": 124,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:01:00",
+                "to": "2021-02-10T20:01:59"
+            },
+            "parameter": {
+                "yAxis": 126.5,
+                "single": null,
+                "diapason": {
+                    "min": 124,
+                    "max": 130
+                },
+                "yaxis": 126.5
+            },
+            "average": 126,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:02:00",
+                "to": "2021-02-10T20:02:59"
+            },
+            "parameter": {
+                "yAxis": 125.75,
+                "single": null,
+                "diapason": {
+                    "min": 123,
+                    "max": 133
+                },
+                "yaxis": 125.75
+            },
+            "average": 125,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:03:00",
+                "to": "2021-02-10T20:03:59"
+            },
+            "parameter": {
+                "yAxis": 121.67,
+                "single": null,
+                "diapason": {
+                    "min": 114,
+                    "max": 133
+                },
+                "yaxis": 121.66666666666667
+            },
+            "average": 121,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:04:00",
+                "to": "2021-02-10T20:04:59"
+            },
+            "parameter": {
+                "yAxis": 122.42,
+                "single": null,
+                "diapason": {
+                    "min": 118,
+                    "max": 126
+                },
+                "yaxis": 122.41666666666667
+            },
+            "average": 122,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:05:00",
+                "to": "2021-02-10T20:05:59"
+            },
+            "parameter": {
+                "yAxis": 125.17,
+                "single": null,
+                "diapason": {
+                    "min": 123,
+                    "max": 127
+                },
+                "yaxis": 125.16666666666667
+            },
+            "average": 125,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:06:00",
+                "to": "2021-02-10T20:06:59"
+            },
+            "parameter": {
+                "yAxis": 123.75,
+                "single": null,
+                "diapason": {
+                    "min": 116,
+                    "max": 130
+                },
+                "yaxis": 123.75
+            },
+            "average": 123,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:07:00",
+                "to": "2021-02-10T20:07:59"
+            },
+            "parameter": {
+                "yAxis": 113.0,
+                "single": null,
+                "diapason": {
+                    "min": 111,
+                    "max": 114
+                },
+                "yaxis": 113.0
+            },
+            "average": 113,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:08:00",
+                "to": "2021-02-10T20:08:59"
+            },
+            "parameter": {
+                "yAxis": 111.67,
+                "single": null,
+                "diapason": {
+                    "min": 108,
+                    "max": 116
+                },
+                "yaxis": 111.66666666666667
+            },
+            "average": 111,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:09:00",
+                "to": "2021-02-10T20:09:59"
+            },
+            "parameter": {
+                "yAxis": 107.25,
+                "single": null,
+                "diapason": {
+                    "min": 105,
+                    "max": 112
+                },
+                "yaxis": 107.25
+            },
+            "average": 107,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:10:00",
+                "to": "2021-02-10T20:10:59"
+            },
+            "parameter": {
+                "yAxis": 110.0,
+                "single": null,
+                "diapason": {
+                    "min": 106,
+                    "max": 117
+                },
+                "yaxis": 110.0
+            },
+            "average": 110,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:11:00",
+                "to": "2021-02-10T20:11:59"
+            },
+            "parameter": {
+                "yAxis": 110.33,
+                "single": null,
+                "diapason": {
+                    "min": 105,
+                    "max": 113
+                },
+                "yaxis": 110.33333333333333
+            },
+            "average": 110,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:12:00",
+                "to": "2021-02-10T20:12:59"
+            },
+            "parameter": {
+                "yAxis": 104.0,
+                "single": null,
+                "diapason": {
+                    "min": 101,
+                    "max": 109
+                },
+                "yaxis": 104.0
+            },
+            "average": 104,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:13:00",
+                "to": "2021-02-10T20:13:59"
+            },
+            "parameter": {
+                "yAxis": 105.67,
+                "single": null,
+                "diapason": {
+                    "min": 103,
+                    "max": 110
+                },
+                "yaxis": 105.66666666666667
+            },
+            "average": 105,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:14:00",
+                "to": "2021-02-10T20:14:59"
+            },
+            "parameter": {
+                "yAxis": 106.0,
+                "single": null,
+                "diapason": {
+                    "min": 102,
+                    "max": 110
+                },
+                "yaxis": 106.0
+            },
+            "average": 106,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:17:00",
+                "to": "2021-02-10T20:17:59"
+            },
+            "parameter": {
+                "yAxis": 93.0,
+                "single": 93,
+                "diapason": null,
+                "yaxis": 93.0
+            },
+            "average": 93,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:22:00",
+                "to": "2021-02-10T20:22:59"
+            },
+            "parameter": {
+                "yAxis": 117.0,
+                "single": 117,
+                "diapason": null,
+                "yaxis": 117.0
+            },
+            "average": 117,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:29:00",
+                "to": "2021-02-10T20:29:59"
+            },
+            "parameter": {
+                "yAxis": 97.0,
+                "single": 97,
+                "diapason": null,
+                "yaxis": 97.0
+            },
+            "average": 97,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:34:00",
+                "to": "2021-02-10T20:34:59"
+            },
+            "parameter": {
+                "yAxis": 100.0,
+                "single": 100,
+                "diapason": null,
+                "yaxis": 100.0
+            },
+            "average": 100,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:39:00",
+                "to": "2021-02-10T20:39:59"
+            },
+            "parameter": {
+                "yAxis": 96.0,
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96.0
+            },
+            "average": 96,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:43:00",
+                "to": "2021-02-10T20:43:59"
+            },
+            "parameter": {
+                "yAxis": 95.0,
+                "single": 95,
+                "diapason": null,
+                "yaxis": 95.0
+            },
+            "average": 95,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:46:00",
+                "to": "2021-02-10T20:46:59"
+            },
+            "parameter": {
+                "yAxis": 97.0,
+                "single": 97,
+                "diapason": null,
+                "yaxis": 97.0
+            },
+            "average": 97,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:54:00",
+                "to": "2021-02-10T20:54:59"
+            },
+            "parameter": {
+                "yAxis": 99.0,
+                "single": 99,
+                "diapason": null,
+                "yaxis": 99.0
+            },
+            "average": 99,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T20:56:00",
+                "to": "2021-02-10T20:56:59"
+            },
+            "parameter": {
+                "yAxis": 101.0,
+                "single": 101,
+                "diapason": null,
+                "yaxis": 101.0
+            },
+            "average": 101,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:01:00",
+                "to": "2021-02-10T21:01:59"
+            },
+            "parameter": {
+                "yAxis": 103.0,
+                "single": 103,
+                "diapason": null,
+                "yaxis": 103.0
+            },
+            "average": 103,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:08:00",
+                "to": "2021-02-10T21:08:59"
+            },
+            "parameter": {
+                "yAxis": 95.0,
+                "single": 95,
+                "diapason": null,
+                "yaxis": 95.0
+            },
+            "average": 95,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:12:00",
+                "to": "2021-02-10T21:12:59"
+            },
+            "parameter": {
+                "yAxis": 98.0,
+                "single": 98,
+                "diapason": null,
+                "yaxis": 98.0
+            },
+            "average": 98,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:18:00",
+                "to": "2021-02-10T21:18:59"
+            },
+            "parameter": {
+                "yAxis": 93.0,
+                "single": 93,
+                "diapason": null,
+                "yaxis": 93.0
+            },
+            "average": 93,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:22:00",
+                "to": "2021-02-10T21:22:59"
+            },
+            "parameter": {
+                "yAxis": 85.0,
+                "single": 85,
+                "diapason": null,
+                "yaxis": 85.0
+            },
+            "average": 85,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:30:00",
+                "to": "2021-02-10T21:30:59"
+            },
+            "parameter": {
+                "yAxis": 96.0,
+                "single": 96,
+                "diapason": null,
+                "yaxis": 96.0
+            },
+            "average": 96,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:33:00",
+                "to": "2021-02-10T21:33:59"
+            },
+            "parameter": {
+                "yAxis": 110.0,
+                "single": 110,
+                "diapason": null,
+                "yaxis": 110.0
+            },
+            "average": 110,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:39:00",
+                "to": "2021-02-10T21:39:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:43:00",
+                "to": "2021-02-10T21:43:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:48:00",
+                "to": "2021-02-10T21:48:59"
+            },
+            "parameter": {
+                "yAxis": 85.0,
+                "single": 85,
+                "diapason": null,
+                "yaxis": 85.0
+            },
+            "average": 85,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:51:00",
+                "to": "2021-02-10T21:51:59"
+            },
+            "parameter": {
+                "yAxis": 88.0,
+                "single": null,
+                "diapason": {
+                    "min": 84,
+                    "max": 93
+                },
+                "yaxis": 88.0
+            },
+            "average": 88,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:55:00",
+                "to": "2021-02-10T21:55:59"
+            },
+            "parameter": {
+                "yAxis": 94.0,
+                "single": 94,
+                "diapason": null,
+                "yaxis": 94.0
+            },
+            "average": 94,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T21:57:00",
+                "to": "2021-02-10T21:57:59"
+            },
+            "parameter": {
+                "yAxis": 91.0,
+                "single": 91,
+                "diapason": null,
+                "yaxis": 91.0
+            },
+            "average": 91,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:02:00",
+                "to": "2021-02-10T22:02:59"
+            },
+            "parameter": {
+                "yAxis": 92.0,
+                "single": 92,
+                "diapason": null,
+                "yaxis": 92.0
+            },
+            "average": 92,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:07:00",
+                "to": "2021-02-10T22:07:59"
+            },
+            "parameter": {
+                "yAxis": 81.0,
+                "single": 81,
+                "diapason": null,
+                "yaxis": 81.0
+            },
+            "average": 81,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:11:00",
+                "to": "2021-02-10T22:11:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:17:00",
+                "to": "2021-02-10T22:17:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:21:00",
+                "to": "2021-02-10T22:21:59"
+            },
+            "parameter": {
+                "yAxis": 82.0,
+                "single": 82,
+                "diapason": null,
+                "yaxis": 82.0
+            },
+            "average": 82,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:29:00",
+                "to": "2021-02-10T22:29:59"
+            },
+            "parameter": {
+                "yAxis": 82.0,
+                "single": 82,
+                "diapason": null,
+                "yaxis": 82.0
+            },
+            "average": 82,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:32:00",
+                "to": "2021-02-10T22:32:59"
+            },
+            "parameter": {
+                "yAxis": 77.0,
+                "single": 77,
+                "diapason": null,
+                "yaxis": 77.0
+            },
+            "average": 77,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:36:00",
+                "to": "2021-02-10T22:36:59"
+            },
+            "parameter": {
+                "yAxis": 84.0,
+                "single": 84,
+                "diapason": null,
+                "yaxis": 84.0
+            },
+            "average": 84,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:44:00",
+                "to": "2021-02-10T22:44:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:46:00",
+                "to": "2021-02-10T22:46:59"
+            },
+            "parameter": {
+                "yAxis": 90.0,
+                "single": 90,
+                "diapason": null,
+                "yaxis": 90.0
+            },
+            "average": 90,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:55:00",
+                "to": "2021-02-10T22:55:59"
+            },
+            "parameter": {
+                "yAxis": 79.0,
+                "single": 79,
+                "diapason": null,
+                "yaxis": 79.0
+            },
+            "average": 79,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T22:57:00",
+                "to": "2021-02-10T22:57:59"
+            },
+            "parameter": {
+                "yAxis": 79.0,
+                "single": 79,
+                "diapason": null,
+                "yaxis": 79.0
+            },
+            "average": 79,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-10T23:03:00",
+                "to": "2021-02-10T23:03:59"
+            },
+            "parameter": {
+                "yAxis": 79.0,
+                "single": 79,
+                "diapason": null,
+                "yaxis": 79.0
+            },
+            "average": 79,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T11:47:00",
+                "to": "2021-02-16T11:47:59"
+            },
+            "parameter": {
+                "yAxis": 68.27,
+                "single": 68,
+                "diapason": null,
+                "yaxis": 68.26667022705078
+            },
+            "average": 68,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T11:50:00",
+                "to": "2021-02-16T11:50:59"
+            },
+            "parameter": {
+                "yAxis": 73.0,
+                "single": 73,
+                "diapason": null,
+                "yaxis": 73.0
+            },
+            "average": 73,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T11:53:00",
+                "to": "2021-02-16T11:53:59"
+            },
+            "parameter": {
+                "yAxis": 68.0,
+                "single": 68,
+                "diapason": null,
+                "yaxis": 68.0
+            },
+            "average": 68,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T11:57:00",
+                "to": "2021-02-16T11:57:59"
+            },
+            "parameter": {
+                "yAxis": 64.0,
+                "single": 64,
+                "diapason": null,
+                "yaxis": 64.0
+            },
+            "average": 64,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:05:00",
+                "to": "2021-02-16T12:05:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:08:00",
+                "to": "2021-02-16T12:08:59"
+            },
+            "parameter": {
+                "yAxis": 64.0,
+                "single": 64,
+                "diapason": null,
+                "yaxis": 64.0
+            },
+            "average": 64,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:14:00",
+                "to": "2021-02-16T12:14:59"
+            },
+            "parameter": {
+                "yAxis": 72.0,
+                "single": 72,
+                "diapason": null,
+                "yaxis": 72.0
+            },
+            "average": 72,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:20:00",
+                "to": "2021-02-16T12:20:59"
+            },
+            "parameter": {
+                "yAxis": 73.0,
+                "single": 73,
+                "diapason": null,
+                "yaxis": 73.0
+            },
+            "average": 73,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:25:00",
+                "to": "2021-02-16T12:25:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:27:00",
+                "to": "2021-02-16T12:27:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:33:00",
+                "to": "2021-02-16T12:33:59"
+            },
+            "parameter": {
+                "yAxis": 70.0,
+                "single": 70,
+                "diapason": null,
+                "yaxis": 70.0
+            },
+            "average": 70,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:37:00",
+                "to": "2021-02-16T12:37:59"
+            },
+            "parameter": {
+                "yAxis": 68.0,
+                "single": 68,
+                "diapason": null,
+                "yaxis": 68.0
+            },
+            "average": 68,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:44:00",
+                "to": "2021-02-16T12:44:59"
+            },
+            "parameter": {
+                "yAxis": 82.0,
+                "single": 82,
+                "diapason": null,
+                "yaxis": 82.0
+            },
+            "average": 82,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:50:00",
+                "to": "2021-02-16T12:50:59"
+            },
+            "parameter": {
+                "yAxis": 73.0,
+                "single": 73,
+                "diapason": null,
+                "yaxis": 73.0
+            },
+            "average": 73,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:51:00",
+                "to": "2021-02-16T12:51:59"
+            },
+            "parameter": {
+                "yAxis": 78.0,
+                "single": 78,
+                "diapason": null,
+                "yaxis": 78.0
+            },
+            "average": 78,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T12:58:00",
+                "to": "2021-02-16T12:58:59"
+            },
+            "parameter": {
+                "yAxis": 76.0,
+                "single": 76,
+                "diapason": null,
+                "yaxis": 76.0
+            },
+            "average": 76,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:05:00",
+                "to": "2021-02-16T13:05:59"
+            },
+            "parameter": {
+                "yAxis": 69.0,
+                "single": 69,
+                "diapason": null,
+                "yaxis": 69.0
+            },
+            "average": 69,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:07:00",
+                "to": "2021-02-16T13:07:59"
+            },
+            "parameter": {
+                "yAxis": 69.0,
+                "single": 69,
+                "diapason": null,
+                "yaxis": 69.0
+            },
+            "average": 69,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:13:00",
+                "to": "2021-02-16T13:13:59"
+            },
+            "parameter": {
+                "yAxis": 71.0,
+                "single": 71,
+                "diapason": null,
+                "yaxis": 71.0
+            },
+            "average": 71,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:16:00",
+                "to": "2021-02-16T13:16:59"
+            },
+            "parameter": {
+                "yAxis": 83.0,
+                "single": 83,
+                "diapason": null,
+                "yaxis": 83.0
+            },
+            "average": 83,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:22:00",
+                "to": "2021-02-16T13:22:59"
+            },
+            "parameter": {
+                "yAxis": 69.0,
+                "single": 69,
+                "diapason": null,
+                "yaxis": 69.0
+            },
+            "average": 69,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:26:00",
+                "to": "2021-02-16T13:26:59"
+            },
+            "parameter": {
+                "yAxis": 76.0,
+                "single": 76,
+                "diapason": null,
+                "yaxis": 76.0
+            },
+            "average": 76,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:35:00",
+                "to": "2021-02-16T13:35:59"
+            },
+            "parameter": {
+                "yAxis": 75.0,
+                "single": 75,
+                "diapason": null,
+                "yaxis": 75.0
+            },
+            "average": 75,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:37:00",
+                "to": "2021-02-16T13:37:59"
+            },
+            "parameter": {
+                "yAxis": 77.0,
+                "single": 77,
+                "diapason": null,
+                "yaxis": 77.0
+            },
+            "average": 77,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:45:00",
+                "to": "2021-02-16T13:45:59"
+            },
+            "parameter": {
+                "yAxis": 70.0,
+                "single": 70,
+                "diapason": null,
+                "yaxis": 70.0
+            },
+            "average": 70,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:47:00",
+                "to": "2021-02-16T13:47:59"
+            },
+            "parameter": {
+                "yAxis": 68.0,
+                "single": 68,
+                "diapason": null,
+                "yaxis": 68.0
+            },
+            "average": 68,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:54:00",
+                "to": "2021-02-16T13:54:59"
+            },
+            "parameter": {
+                "yAxis": 71.0,
+                "single": 71,
+                "diapason": null,
+                "yaxis": 71.0
+            },
+            "average": 71,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T13:57:00",
+                "to": "2021-02-16T13:57:59"
+            },
+            "parameter": {
+                "yAxis": 67.0,
+                "single": 67,
+                "diapason": null,
+                "yaxis": 67.0
+            },
+            "average": 67,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:04:00",
+                "to": "2021-02-16T14:04:59"
+            },
+            "parameter": {
+                "yAxis": 60.0,
+                "single": 60,
+                "diapason": null,
+                "yaxis": 60.0
+            },
+            "average": 60,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:09:00",
+                "to": "2021-02-16T14:09:59"
+            },
+            "parameter": {
+                "yAxis": 74.0,
+                "single": 74,
+                "diapason": null,
+                "yaxis": 74.0
+            },
+            "average": 74,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:11:00",
+                "to": "2021-02-16T14:11:59"
+            },
+            "parameter": {
+                "yAxis": 71.0,
+                "single": 71,
+                "diapason": null,
+                "yaxis": 71.0
+            },
+            "average": 71,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:20:00",
+                "to": "2021-02-16T14:20:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:23:00",
+                "to": "2021-02-16T14:23:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:27:00",
+                "to": "2021-02-16T14:27:59"
+            },
+            "parameter": {
+                "yAxis": 61.0,
+                "single": 61,
+                "diapason": null,
+                "yaxis": 61.0
+            },
+            "average": 61,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:33:00",
+                "to": "2021-02-16T14:33:59"
+            },
+            "parameter": {
+                "yAxis": 63.0,
+                "single": 63,
+                "diapason": null,
+                "yaxis": 63.0
+            },
+            "average": 63,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:36:00",
+                "to": "2021-02-16T14:36:59"
+            },
+            "parameter": {
+                "yAxis": 55.0,
+                "single": 55,
+                "diapason": null,
+                "yaxis": 55.0
+            },
+            "average": 55,
+            "message": null
+        },
+        {
+            "date": {
+                "from": "2021-02-16T14:45:00",
+                "to": "2021-02-16T14:45:59"
+            },
+            "parameter": {
+                "yAxis": 70.0,
+                "single": 70,
+                "diapason": null,
+                "yaxis": 70.0
+            },
+            "average": 70,
             "message": null
         }
     ]
