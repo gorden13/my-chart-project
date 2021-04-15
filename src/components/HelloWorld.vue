@@ -188,7 +188,7 @@ export default {
       valueAxis.tooltip.disabled = true;
       // valueAxis.extraMax = 0.05
       // valueAxis.extraMin = 0.05
-      // valueAxis.start = 0
+      valueAxis.start = 0
       valueAxis.min = 0;
       // valueAxis.renderer.gridContainer.zIndex = 1;
       valueAxis.cursorTooltipEnabled = false;
@@ -232,7 +232,7 @@ export default {
         { timeUnit: "year", count: 50 },
         { timeUnit: "year", count: 100 }
       ];
-      // dateAxis.gridIntervals.setAll(gridIntervals);
+      dateAxis.gridIntervals.setAll(gridIntervals);
       // chart.paddingRight = 20
       // chart.paddingLeft = 20
 
@@ -254,13 +254,14 @@ export default {
         timeUnit: "hour",
         count: 1
       };
-      dateAxis.renderer.minGridDistance = 20;
+      dateAxis.renderer.minGridDistance = 45;
+      
       // dateAxis.renderer.grid.template.location = 0.5;
-      dateAxis.start = 1;
+      dateAxis.start = 0.99;
       // dateAxis.renderer.labels.template.location = 0.5;
       dateAxis.groupData = true;
       // dateAxis.skipEmptyPeriods = true;
-      // dateAxis.groupCount = 400;
+      // dateAxis.groupCount = 50;
       dateAxis.keepSelection = true;
       dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
 
@@ -273,7 +274,7 @@ export default {
 
           // let start1 = new Date(ev.target.minZoomed);
           // let end1 = new Date(ev.target.maxZoomed);
-          console.log("New range: " + start + " -- " + end);
+          // console.log("New range: " + start + " -- " + end);
           // console.log("New range: " + start1 + " -- " + end1);
           //последняя точка
           const lastPoint = this.$moment(this.point)
@@ -371,18 +372,76 @@ export default {
       // seriesArray.push(createSeries('value', '#000'))
       // seriesArray.push(createSeries('systolic', 'red'))
       // seriesArray.push(createSeries('diastolic', 'green'))
+      chart.maskBullets = false;
 
       const createBarSeries = () => {
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.valueY = "value";
         series.dataFields.dateX = "date";
+        series.minBulletDistance = 15;
+        // series.tooltipText = "{value}";
+        // series.tooltip.pointerOrientation = "vertical";
+        // series.tooltip.disabled = true
+        // series.tooltip.hiddenState.properties.opacity = 1;
+        // series.tooltip.hiddenState.properties.visible = false;
+        // series.stacked = true
         // series.minBulletDistance = 0;
 
+        // series.tooltip.adapter.add("disabled", function(disabled, target) {
+        //   // alternatively use this:
+        //   // if (target.dataItem && target.dataItem.dataContext && target.dataItem.dataContext.visits === 0) {
+        //   return true
+        // });
+
+        var bullet = series.bullets.push(new am4charts.Bullet());
+
+        var triangle = bullet.createChild(am4core.Triangle);
+        triangle.width = 15;
+        triangle.height = 13;
+        triangle.dy = -3;
+        triangle.direction = "bottom";
+        // triangle.propertyFields.fill = "color";
+        // triangle.propertyFields.fillOpacity = "opacity";
+        triangle.fillOpacity = 1;
+        triangle.fill = am4core.color("#0096C8");
+        triangle.stroke = am4core.color("#0096C8");
+        // triangle.disabled = true
+        triangle.strokeWidth = 0;
+        triangle.horizontalCenter = "middle";
+        triangle.verticalCenter = "bottom";
+
+
         var columnTemplate = series.columns.template;
-        // columnTemplate.strokeWidth = 5;
-        columnTemplate.strokeOpacity = 1;
+        columnTemplate.strokeWidth = 0;
+        columnTemplate.strokeOpacity = 0;
         columnTemplate.width = 10;
         columnTemplate.fill = am4core.color("#0096C8");
+
+        // Add slice click event
+        // var currentSlice;
+        series.events.on("hit", function(ev) {
+          ev.event.stopPropagation()
+          // triangle.disabled = false
+          ev.target.bullets.values[0].children.values[0].fillOpacity = 1
+          // console.log(ev.target.bullets.values[0].children.values[0].fillOpacity);
+          // if (currentSlice) {
+          //   currentSlice.tooltip.hide();
+          // }
+          // currentSlice = ev.target;
+          // currentSlice.tooltipText = "{value}";
+          // currentSlice.showTooltip();
+        }, this);
+
+        // columnTemplate.events.on('hit', (ev) => {
+        //   dateAxis.showTooltipAtPosition(0.5);
+        //   console.log('click');
+        // })
+
+        // var bullet = series.bullets.push(new am4charts.LabelBullet())
+        // bullet.interactionsEnabled = false
+        // bullet.dy = 30;
+        // bullet.label.text = '{value}'
+        // bullet.label.fill = am4core.color('#ffffff')
       }
 
       createBarSeries()
@@ -490,7 +549,7 @@ export default {
         // dateAxis.start = 0.99;
         // dateAxis.end = 0.5;
         dateAxis.tooltip.disabled = true;
-        dateAxis.start = 1;
+        // dateAxis.start = 1;
         // dateAxis.startLocation = 0.49;
         // dateAxis.endLocation = 0.51;
         // dateAxis.skipEmptyPeriods = true;
