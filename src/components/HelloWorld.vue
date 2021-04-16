@@ -20,6 +20,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4lang_ru_RU from "@amcharts/amcharts4/lang/ru_RU";
 
 am4core.useTheme(am4themes_animated);
+am4core.options.autoDispose = true;
 
 import result from '/data.json'
 
@@ -28,11 +29,12 @@ export default {
   data: () => ({
     points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
-    barPoints: result?.['pulse'] || [],
+    barPoints: result?.['pulse1hour'] || [],
     point: null,
     clickedBullets: [],
     lastDate: null,
-    allBulets: []
+    allBulets: [],
+    selectedColumn: null
   }),
   mounted() {
     this.newRender();
@@ -64,7 +66,7 @@ export default {
         value_date: new Date("2019-03-05T12:00:00.000")
       }];
       let categoryAxis = chart.xAxes.push(new am4charts.DateAxis());
-      categoryAxis.start = 0.7;
+      categoryAxis.start = 0.99;
       categoryAxis.keepSelection = true;
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -186,6 +188,8 @@ export default {
       // valueAxis.rangeChangeDuration = 5000;
 
       valueAxis.tooltip.disabled = true;
+      console.log(valueAxis.renderer.position);
+      // valueAxis.valign = "right";
       // valueAxis.extraMax = 0.05
       // valueAxis.extraMin = 0.05
       valueAxis.start = 0
@@ -232,13 +236,13 @@ export default {
         { timeUnit: "year", count: 50 },
         { timeUnit: "year", count: 100 }
       ];
-      dateAxis.gridIntervals.setAll(gridIntervals);
+      // dateAxis.gridIntervals.setAll(gridIntervals);
       // chart.paddingRight = 20
       // chart.paddingLeft = 20
 
       // при минутном
-      // dateAxis.dateFormats.setKey("minute", "HH:mm");
-      // dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
+      dateAxis.dateFormats.setKey("hour", "HH:mm");
+      dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
       // dateAxis.baseInterval = {
       //   timeUnit: "minute",
       //   count: 5
@@ -248,22 +252,41 @@ export default {
 
       // dateAxis.start = 0.98
 
-      dateAxis.dateFormats.setKey("hour", "HH:mm");
-      dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
-      dateAxis.baseInterval = {
-        timeUnit: "hour",
-        count: 1
-      };
-      dateAxis.renderer.minGridDistance = 45;
+      // dateAxis.dateFormats.setKey("minute", "HH:mm");
+      // dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
+      // dateAxis.baseInterval = {
+      //   timeUnit: "minute",
+      //   count: 1
+      // };
+      dateAxis.renderer.minGridDistance = 50;
       
-      // dateAxis.renderer.grid.template.location = 0.5;
-      dateAxis.start = 0.99;
+      
+      dateAxis.start = 0.98;
       // dateAxis.renderer.labels.template.location = 0.5;
       dateAxis.groupData = true;
       // dateAxis.skipEmptyPeriods = true;
       // dateAxis.groupCount = 50;
       dateAxis.keepSelection = true;
-      dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
+      
+      // при минутном
+      // dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
+      // при часовом
+      dateAxis.groupInterval = { timeUnit: "hour", count: 1 };
+      dateAxis.renderer.labels.template.location = 0.00001;
+      // dateAxis.renderer.grid.template.location = 0;
+      // dateAxis.startLocation = -0.3;
+      dateAxis.endLocation = 1.1;
+      // dateAxis.end = 1.3;
+
+      // dateAxis.renderer.grid.template.location = 0;
+      
+      // dateAxis.renderer.minLabelPosition = 0.05;
+      // dateAxis.renderer.maxLabelPosition = 0.95;
+      // dateAxis.renderer.cellStartLocation = 0.5;
+      // dateAxis.renderer.cellEndLocation = 0.99;
+      // dateAxis.startLocation = -0.3;
+      
+      // dateAxis.endLocation = 0.5
 
       dateAxis.events.on('rangechangeended', (ev) => {
         // setTimeout(() => {
@@ -374,77 +397,75 @@ export default {
       // seriesArray.push(createSeries('diastolic', 'green'))
       chart.maskBullets = false;
 
+      let columnsArray = []
+
       const createBarSeries = () => {
         var series = chart.series.push(new am4charts.ColumnSeries());
         series.dataFields.valueY = "value";
         series.dataFields.dateX = "date";
-        series.minBulletDistance = 15;
-        // series.tooltipText = "{value}";
-        // series.tooltip.pointerOrientation = "vertical";
-        // series.tooltip.disabled = true
-        // series.tooltip.hiddenState.properties.opacity = 1;
-        // series.tooltip.hiddenState.properties.visible = false;
-        // series.stacked = true
-        // series.minBulletDistance = 0;
-
-        // series.tooltip.adapter.add("disabled", function(disabled, target) {
-        //   // alternatively use this:
-        //   // if (target.dataItem && target.dataItem.dataContext && target.dataItem.dataContext.visits === 0) {
-        //   return true
-        // });
 
         var bullet = series.bullets.push(new am4charts.Bullet());
 
         var triangle = bullet.createChild(am4core.Triangle);
+        // при минутном
         triangle.width = 15;
         triangle.height = 13;
-        triangle.dy = -3;
+        // при часовом
+        // triangle.width = 25;
+        // triangle.height = 23;
+
+        triangle.dy = -5;
         triangle.direction = "bottom";
-        // triangle.propertyFields.fill = "color";
-        // triangle.propertyFields.fillOpacity = "opacity";
-        triangle.fillOpacity = 0;
+        triangle.visible = false
         triangle.fill = am4core.color("#0096C8");
         triangle.stroke = am4core.color("#0096C8");
-        // triangle.disabled = true
         triangle.strokeWidth = 0;
         triangle.horizontalCenter = "middle";
         triangle.verticalCenter = "bottom";
 
-
         var columnTemplate = series.columns.template;
-        columnTemplate.strokeWidth = 0;
-        columnTemplate.strokeOpacity = 0;
-        columnTemplate.width = 10;
+        columnTemplate.strokeWidth = 1;
+        columnTemplate.strokeOpacity = 1;
+        columnTemplate.stroke = am4core.color("#fff");
+        columnTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+
+        // // при минутном
+        // columnTemplate.width = 8;
+        // // при часовом
+        columnTemplate.width = am4core.percent(90);
+
         columnTemplate.fill = am4core.color("#0096C8");
 
-        // Add slice click event
-        // var currentSlice;
+        series.columns.template.events.on("inited", (ev) => {
+          if (this.selectedColumn) {
+            ev.target.fillOpacity = 0.5
+          }
+          columnsArray.push(ev.target)
+        })
+
         series.columns.template.events.on("hit", function(ev) {
           ev.event.stopPropagation()
-          // triangle.disabled = false
+          chart.series.values.forEach(element => {
+            element.bulletsContainer.children.values.forEach(bullet => {
+              bullet.children.values[0].visible = false
+            })
+          });
+          
+          this.point = ev.target.dataItem.dataContext.date
+          this.selectedColumn = ev.target.dataItem.dataContext
           ev.target.dataItem.bullets.each((id, bullet) => {
-            // bullet.fillOpacity = 1
-            bullet.children.values[0].fillOpacity = 1
+            bullet.children.values[0].visible = true
           })
-          // console.log(ev.target.bullets.values[0].children.values[0].fillOpacity);
-          // if (currentSlice) {
-          //   currentSlice.tooltip.hide();
-          // }
-          // currentSlice = ev.target;
-          // currentSlice.tooltipText = "{value}";
-          // currentSlice.showTooltip();
+
+          console.log(chart.series);  
+          columnsArray.forEach(item => {
+            if (item.uid !== ev.target.uid) {
+              item.fillOpacity = 0.5
+            } else {
+              item.fillOpacity = 1
+            }
+          })
         }, this);
-
-        // columnTemplate.events.on('hit', (ev) => {
-        //   dateAxis.showTooltipAtPosition(0.5);
-        //   console.log('click');
-        // })
-
-        // var bullet = series.bullets.push(new am4charts.LabelBullet())
-        // bullet.interactionsEnabled = false
-        // bullet.dy = 30;
-        // bullet.label.text = '{value}'
-        // bullet.label.fill = am4core.color('#ffffff')
       }
 
       createBarSeries()
@@ -455,11 +476,17 @@ export default {
           return
         }
 
+        this.selectedColumn = null
+
+        columnsArray.forEach(item => {
+          item.fillOpacity = 1
+        })
+
         chart.series.values.forEach(element => {
-          element.strokeOpacity = 1
+          // element.fillOpacity = 1
 
           element.bulletsContainer.children.values.forEach(bullet => {
-            bullet.children.values[0].fillOpacity = 0
+            bullet.children.values[0].visible = false
             // bullet.children.values[0].scale = 1
           })
         });
