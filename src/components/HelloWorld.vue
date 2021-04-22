@@ -10,6 +10,16 @@
     >
       Download
     </a> -->
+    <!-- <input type="time"> -->
+    <!-- <div v-for="(input, index) of inputs" :key="index">
+      <label>{{ input.value }}</label>
+      <input type="text" v-model="inputs[index].value">
+    </div>
+    <button @click="save"></button> -->
+
+    <code style="margin-top: 25px; font-size: 20px;">
+      {{ pointInfo }}
+    </code>
   </div>
 </template>
 
@@ -27,10 +37,25 @@ import result from '/data.json'
 export default {
   name: 'HelloWorld',
   data: () => ({
+    inputs: [
+      {
+        label: 'input 1',
+        value: null
+      },
+      {
+        label: 'input 2',
+        value: null
+      },
+      {
+        label: 'input 2',
+        value: null
+      }
+    ],
     points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
-    barPoints: result?.['pulse1hour'] || [],
+    barPoints: result?.['sleep'] || [],
     point: null,
+    pointInfo: null,
     clickedBullets: [],
     lastDate: null,
     allBulets: [],
@@ -52,6 +77,9 @@ export default {
     }
   },
   methods: {
+    save () {
+      console.log(this.inputs);
+    },
     render () {
       let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
 
@@ -163,6 +191,16 @@ export default {
         }
       });
     },
+    parseSleep(arr) {
+      return this.barPoints.map(item => {
+        return {
+          date: this.$moment(item.date?.from).toDate(),
+          sleep: item.sleep.yAxis,
+          inBed: item.inBed.yAxis,
+          wake: item.wake.yAxis
+        }
+      });
+    },
     newRender () {
 
       // Themes begin
@@ -176,7 +214,7 @@ export default {
       chart.language.locale = am4lang_ru_RU;
       // chart.data = this.parseData()
 
-      chart.data = this.parseBarData()
+      chart.data = this.parseSleep()
 
       // Set input format for the dates
       // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -186,16 +224,26 @@ export default {
       var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
       // valueAxis.rangeChangeDuration = 5000;
+      // valueAxis.includeRangesInMinMax = true
 
       valueAxis.tooltip.disabled = true;
-      console.log(valueAxis.renderer.position);
       // valueAxis.valign = "right";
       // valueAxis.extraMax = 0.05
       // valueAxis.extraMin = 0.05
-      valueAxis.start = 0
-      valueAxis.min = 0;
+      // valueAxis.start = 0
+      // valueAxis.min = 0;
+      // valueAxis.strictMinMax = true;
+      // valueAxis.calculateTotals = true;
+      // valueAxis.renderer.minWidth = 150;
       // valueAxis.renderer.gridContainer.zIndex = 1;
-      valueAxis.cursorTooltipEnabled = false;
+      // valueAxis.cursorTooltipEnabled = false;
+
+      // const range = valueAxis.axisRanges.create()
+      // range.value = 10000
+      // // range.grid.above = true;
+      // range.grid.stroke = am4core.color("#F66D6D")
+      // range.grid.strokeWidth = 2
+      // range.grid.strokeOpacity = 1
 
       // valueAxis.renderer.labels.template.dy = -20;
 
@@ -241,8 +289,8 @@ export default {
       // chart.paddingLeft = 20
 
       // при минутном
-      dateAxis.dateFormats.setKey("hour", "HH:mm");
-      dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
+      // dateAxis.dateFormats.setKey("hour", "HH:mm");
+      // dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
       // dateAxis.baseInterval = {
       //   timeUnit: "minute",
       //   count: 5
@@ -252,13 +300,13 @@ export default {
 
       // dateAxis.start = 0.98
 
-      // dateAxis.dateFormats.setKey("minute", "HH:mm");
-      // dateAxis.periodChangeDateFormats.setKey("minute", "HH:mm");
-      // dateAxis.baseInterval = {
-      //   timeUnit: "minute",
-      //   count: 1
-      // };
-      dateAxis.renderer.minGridDistance = 50;
+      dateAxis.dateFormats.setKey("day", "dd");
+      dateAxis.periodChangeDateFormats.setKey("day", "dd");
+      dateAxis.baseInterval = {
+        timeUnit: "day",
+        count: 1
+      };
+      dateAxis.renderer.minGridDistance = 75;
       
       
       dateAxis.start = 0.98;
@@ -271,11 +319,13 @@ export default {
       // при минутном
       // dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
       // при часовом
-      dateAxis.groupInterval = { timeUnit: "hour", count: 1 };
-      dateAxis.renderer.labels.template.location = 0.00001;
+      
+
+      dateAxis.groupInterval = { timeUnit: "day", count: 1 };
+      // dateAxis.renderer.labels.template.location = 0.00001;
       // dateAxis.renderer.grid.template.location = 0;
       // dateAxis.startLocation = -0.3;
-      dateAxis.endLocation = 1.1;
+      // dateAxis.endLocation = 1.1;
       // dateAxis.end = 1.3;
 
       // dateAxis.renderer.grid.template.location = 0;
@@ -399,26 +449,24 @@ export default {
 
       let columnsArray = []
 
-      const createBarSeries = () => {
+      const createBarSeries = (valueY, color, opacity) => {
         var series = chart.series.push(new am4charts.ColumnSeries());
-        series.dataFields.valueY = "value";
+        series.dataFields.valueY = valueY;
         series.dataFields.dateX = "date";
+        series.stacked = true;
+        // series.dataItems.template.locations.categoryX = 0.5;
 
         var bullet = series.bullets.push(new am4charts.Bullet());
 
         var triangle = bullet.createChild(am4core.Triangle);
-        // при минутном
         triangle.width = 15;
         triangle.height = 13;
-        // при часовом
-        // triangle.width = 25;
-        // triangle.height = 23;
 
         triangle.dy = -5;
         triangle.direction = "bottom";
         triangle.visible = false
-        triangle.fill = am4core.color("#0096C8");
-        triangle.stroke = am4core.color("#0096C8");
+        triangle.fill = am4core.color(color);
+        triangle.stroke = am4core.color(color);
         triangle.strokeWidth = 0;
         triangle.horizontalCenter = "middle";
         triangle.verticalCenter = "bottom";
@@ -426,21 +474,26 @@ export default {
         var columnTemplate = series.columns.template;
         columnTemplate.strokeWidth = 1;
         columnTemplate.strokeOpacity = 1;
+        // columnTemplate.fillOpacity = opacity;
         columnTemplate.stroke = am4core.color("#fff");
+        columnTemplate.height = am4core.percent(25);
         columnTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
         // // при минутном
-        // columnTemplate.width = 8;
+        // columnTemplate.width = 10;
         // // при часовом
         columnTemplate.width = am4core.percent(90);
 
-        columnTemplate.fill = am4core.color("#0096C8");
+        columnTemplate.fill = am4core.color(color);
 
         series.columns.template.events.on("inited", (ev) => {
           if (this.selectedColumn) {
             ev.target.fillOpacity = 0.5
           }
-          columnsArray.push(ev.target)
+          columnsArray.push({
+            column: ev.target,
+            groupIndex: ev.target.dataItem.index
+          })
         })
 
         series.columns.template.events.on("hit", function(ev) {
@@ -452,23 +505,30 @@ export default {
           });
           
           this.point = ev.target.dataItem.dataContext.date
+          this.pointInfo = ev.target.dataItem.dataContext
           this.selectedColumn = ev.target.dataItem.dataContext
           ev.target.dataItem.bullets.each((id, bullet) => {
             bullet.children.values[0].visible = true
           })
 
-          console.log(chart.series);  
+          
           columnsArray.forEach(item => {
-            if (item.uid !== ev.target.uid) {
-              item.fillOpacity = 0.5
+            console.log(item);  
+            if (item.groupIndex !== ev.target.dataItem.index) {
+              item.column.fillOpacity = 0.5
             } else {
-              item.fillOpacity = 1
+              item.column.fillOpacity = 1
             }
+
+            // item.fillOpacity = 0.5
+
           })
         }, this);
       }
 
-      createBarSeries()
+      createBarSeries('sleep', "#0096C8", 1)
+      createBarSeries('inBed', "#77BCD4", 1)
+      createBarSeries('wake', "#BBDFEB", 1)
 
       chart.events.on('hit', (ev) => {
         console.log('chartClick');
@@ -477,9 +537,10 @@ export default {
         }
 
         this.selectedColumn = null
+        this.pointInfo = null
 
         columnsArray.forEach(item => {
-          item.fillOpacity = 1
+          item.column.fillOpacity = 1
         })
 
         chart.series.values.forEach(element => {
@@ -523,14 +584,14 @@ export default {
 
       chart.events.on("beforevalidated", (ev) => {
         // check if there's data
-        if (ev.target.data.length == 0) {
-          showIndicator();
-        }
-        else if (indicator) {
-          hideIndicator();
-        } else {
-          this.point = ev.target.data?.[ev.target.data.length - 1].date
-        }
+        // if (ev.target.data.length == 0) {
+        //   showIndicator();
+        // }
+        // else if (indicator) {
+        //   hideIndicator();
+        // } else {
+          this.point = ev.target.data?.[ev.target.data.length - 1]?.date
+        // }
 
         // chart.data.sort(function(a, b) {
         //   return (a.date) - (b.date);
@@ -604,7 +665,10 @@ export default {
       chart.cursor.lineY.opacity = 0;
       chart.cursor.lineX.opacity = 0;
       chart.scrollbarX = new am4core.Scrollbar();
+      // chart.scrollbarY = new am4core.Scrollbar();
       chart.scrollbarX.animationDuration = 5000;
+      // chart.scrollbarY.start = 0;
+      // chart.scrollbarY.end = 0.08;
       // chart.scrollbarX.events.on('wheel', (ev) => {
       //   console.log(ev);
       // })
