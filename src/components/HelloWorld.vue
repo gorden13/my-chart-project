@@ -237,35 +237,27 @@ export default {
       //     inWakeArray: this.getSleepPeriods(item.wake.periods)
       //   }
       // });
+
+      const putsPeriods = (periodsArray, propName, color) => {
+        const newArray = periodsArray.map(item => {
+          const tempObj = { 
+            date: this.$moment(item.from).toDate(),
+            value: 100,
+            color: color
+          }
+
+          tempObj[propName] = 100
+
+          return tempObj
+        })
+
+        return newArray
+      }
+
+
       let array = []
 
       this.barPoints.forEach(item => {
-        array.push({
-          date: this.$moment(item.date?.from).toDate(),
-          sleep: item.sleep.yAxis,
-          inBed: item.inBed.yAxis,
-          wake: item.wake.yAxis,
-          main: 100,
-          inBedArray: this.getSleepPeriods(item.inBed.periods),
-          inSleepArray: this.getSleepPeriods(item.sleep.periods),
-          inWakeArray: this.getSleepPeriods(item.wake.periods)
-        })
-
-        array.push({
-          date: this.$moment(item.date?.to).toDate(),
-          sleep: null,
-          inBed: null,
-          wake: null,
-          main: 100,
-          inBedArray: {},
-          inSleepArray: {},
-          inWakeArray: {}
-        })
-
-        // if (item) {
-
-        // }
-
         // array.push({
         //   date: this.$moment(item.date?.from).toDate(),
         //   sleep: item.sleep.yAxis,
@@ -277,7 +269,24 @@ export default {
         //   inWakeArray: this.getSleepPeriods(item.wake.periods)
         // })
 
-        
+        // array.push({
+        //   date: this.$moment(item.date?.to).toDate(),
+        //   sleep: null,
+        //   inBed: null,
+        //   wake: null,
+        //   main: 100,
+        //   inBedArray: {},
+        //   inSleepArray: {},
+        //   inWakeArray: {}
+        // })
+
+        // складываем все точки пребывания в постели, итд.
+        array = [...array, ...putsPeriods(item.inBed.periods, 'inBed', '#0096C8')]
+        array = [...array, ...putsPeriods(item.sleep.periods, 'sleep', '#77BCD4')]
+        array = [...array, ...putsPeriods(item.wake.periods, 'wake', '#BBDFEB')]
+
+        console.log(array);
+
       })
 
       return array
@@ -576,8 +585,8 @@ export default {
 
         var columnTemplate = series.columns.template;
         columnTemplate.strokeWidth = 1;
-        columnTemplate.strokeOpacity = 1;
-        columnTemplate.fillOpacity = 0;
+        columnTemplate.strokeOpacity = 0;
+        // columnTemplate.fillOpacity = 0;
         columnTemplate.stroke = am4core.color("#fff");
         columnTemplate.height = am4core.percent(100);
         // columnTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
@@ -585,7 +594,7 @@ export default {
         // // при минутном
         // columnTemplate.width = 10;
         // // при часовом
-        columnTemplate.width = am4core.percent(90);
+        columnTemplate.width = am4core.percent(100);
 
         columnTemplate.fill = am4core.color(color);
 
@@ -638,7 +647,24 @@ export default {
       // createBarSeries('sleep', "#0096C8", 1)
       // createBarSeries('inBed', "#77BCD4", 1)
       // createBarSeries('wake', "#BBDFEB", 1)
-      const series = createBarSeries('main', "#BBDFEB", 1)
+      // const series = createBarSeries('main', "#BBDFEB", 1)
+
+      const createSeriesForSleep = () => {
+        const series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.valueY = "value";
+        series.dataFields.dateX = "date";
+        series.stroke = am4core.color("#96BBBB");
+        series.strokeWidth = 1;
+        series.strokeOpacity = 0;
+        series.fill = am4core.color("#96BBBB");
+        series.fillOpacity = 1;
+        series.tensionX = 0.5;
+
+        series.propertyFields.fill = "color";
+        series.propertyFields.stroke = "color";
+      }
+
+      createSeriesForSleep()
 
        /* Create ranges */
       function createRange(from, to, color) {
@@ -667,19 +693,19 @@ export default {
 
       var length = dataPoints.length
 
-      dataPoints.forEach(item => {
-        if (item.inBedArray.from && item.inBedArray.to) {
-          // console.log(`create range from: ${item.inBedArray.from} , to: ${item.inBedArray.to}`);
-          createRange(item.inBedArray.from, item.inBedArray.to, "#19d228")
-        }
-        if (item.inSleepArray.from && item.inSleepArray.to) {
-          // console.log('sleep');
-          createRange(item.inSleepArray.from, item.inSleepArray.to, "#b4dd1e")
-        }
-        if (item.inWakeArray.from && item.inWakeArray.to) {
-          createRange(item.inWakeArray.from, item.inWakeArray.to, "#fb7116")
-        }
-      })
+      // dataPoints.forEach(item => {
+      //   if (item.inBedArray.from && item.inBedArray.to) {
+      //     // console.log(`create range from: ${item.inBedArray.from} , to: ${item.inBedArray.to}`);
+      //     createRange(item.inBedArray.from, item.inBedArray.to, "#19d228")
+      //   }
+      //   if (item.inSleepArray.from && item.inSleepArray.to) {
+      //     // console.log('sleep');
+      //     createRange(item.inSleepArray.from, item.inSleepArray.to, "#b4dd1e")
+      //   }
+      //   if (item.inWakeArray.from && item.inWakeArray.to) {
+      //     createRange(item.inWakeArray.from, item.inWakeArray.to, "#fb7116")
+      //   }
+      // })
 
       // createRange(dataPoints[0].inBedArray.from, dataPoints[0].inBedArray.to)
 
