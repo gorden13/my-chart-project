@@ -19,6 +19,8 @@
 
     <!-- <input type="number"> -->
 
+    <button type="button" @click="scrollTo">scroll to</button>
+
     <code style="margin-top: 25px; font-size: 20px;">
       {{ pointInfo }}
     </code>
@@ -55,14 +57,16 @@ export default {
     ],
     points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
-    barPoints: result?.['sleep2'] || [],
+    barPoints: result?.['sleep3'] || [],
     point: null,
     pointInfo: null,
     clickedBullets: [],
     lastDate: null,
     allBulets: [],
     selectedColumn: null,
-    inBedArray: []
+    inBedArray: [],
+    chart: null,
+    dateAxis: null
   }),
   mounted() {
     this.newRender();
@@ -80,6 +84,14 @@ export default {
     }
   },
   methods: {
+    scrollTo() {
+      this.dateAxis.zoomToDates(
+        new Date(2021, 3, 29),
+        new Date(2021, 3, 30),
+        false,
+        true // this makes zoom instant
+      );
+    },
     save () {
       console.log(this.inputs);
     },
@@ -222,9 +234,9 @@ export default {
       });
     },
     parseSleep(arr) {
-      this.barPoints.sort(
-        (a, b) => this.$moment(a.date.from).valueOf() - this.$moment(b.date.from).valueOf()
-      )
+      // this.barPoints.sort(
+      //   (a, b) => this.$moment(a.date.from).valueOf() - this.$moment(b.date.from).valueOf()
+      // )
       // return this.barPoints.map(item => {
       //   return {
       //     date: this.$moment(item.date?.from).toDate(),
@@ -241,9 +253,10 @@ export default {
       const putsPeriods = (periodsArray, propName, color) => {
         const newArray = periodsArray.map(item => {
           const tempObj = { 
-            date: this.$moment(item.from).toDate(),
-            value: 100,
-            color: color
+            category: '',
+            from: this.$moment(item.from).toDate(),
+            to: this.$moment(item.to).toDate(),
+            color: am4core.color(color)
           }
 
           tempObj[propName] = 100
@@ -279,17 +292,24 @@ export default {
         //   inSleepArray: {},
         //   inWakeArray: {}
         // })
-
+        array = [...array, {
+          category: '',
+          from: this.$moment(item.date.from).toDate(),
+          to: this.$moment(item.date.to).toDate(),
+          color: am4core.color('#fff')
+        }]
         // складываем все точки пребывания в постели, итд.
         array = [...array, ...putsPeriods(item.inBed.periods, 'inBed', '#0096C8')]
         array = [...array, ...putsPeriods(item.sleep.periods, 'sleep', '#77BCD4')]
         array = [...array, ...putsPeriods(item.wake.periods, 'wake', '#BBDFEB')]
 
-        console.log(array);
+        // console.log(array);
 
       })
 
-      return array
+      return array.sort(
+        (a, b) => this.$moment(a.from).valueOf() - this.$moment(b.from).valueOf()
+      )
     },
     newRender () {
 
@@ -299,6 +319,7 @@ export default {
 
       // Create chart instance
       var chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
+      this.chart = chart
       chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
@@ -308,7 +329,11 @@ export default {
 
       const dataPoints = this.parseSleep()
 
+      console.log(dataPoints);
+
       chart.data = dataPoints
+
+      // chart.seriesContainer.zIndex = -1;
 
       // console.log(chart.data);
 
@@ -317,8 +342,8 @@ export default {
 
       // Create axes
       var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
+      this.dateAxis = dateAxis
+      var valueAxis = chart.yAxes.push(new am4charts.CategoryAxis());
       
 
       // valueAxis.rangeChangeDuration = 5000;
@@ -331,16 +356,18 @@ export default {
       // valueAxis.start = 0
 
       // for sleep 1 day scale
-      valueAxis.max = 200;
-      valueAxis.min = 0;
+      // valueAxis.max = 200;
+      // valueAxis.min = 0;
+      valueAxis.renderer.labels.template.stroke = am4core.color('#98B6C8');
       valueAxis.renderer.grid.template.disabled = true;
-      valueAxis.renderer.labels.template.disabled = true;
+      // valueAxis.renderer.labels.template.disabled = true;
+      valueAxis.dataFields.category = "category";
       dateAxis.renderer.grid.template.strokeDasharray = '4.3'
-      dateAxis.renderer.grid.template.strokeOpacity = 0.5
+      dateAxis.renderer.grid.template.strokeOpacity = 1
+      dateAxis.groupData = false;
       dateAxis.renderer.labels.template.location = 0.001;
-
-      // dateAxis.startLocation = 0.5;
-      // dateAxis.endLocation = 0.5;
+      dateAxis.startLocation = 0.3;
+      dateAxis.endLocation = -0.3;
       //
 
       // valueAxis.strictMinMax = true;
@@ -403,10 +430,10 @@ export default {
       dateAxis.dateFormats.setKey("hour", "HH:mm");
       dateAxis.periodChangeDateFormats.setKey("hour", "HH:mm");
       dateAxis.baseInterval = {
-        timeUnit: "hour",
+        timeUnit: "minute",
         count: 1
       };
-      dateAxis.renderer.minGridDistance = 75;
+      dateAxis.renderer.minGridDistance = 50;
       // dateAxis.renderer.grid.template.location = 0;
 
       // dateAxis.start = 0.98
@@ -420,9 +447,9 @@ export default {
       // dateAxis.renderer.minGridDistance = 75;
       
       
-      dateAxis.start = 0.85;
+      dateAxis.start = 0.99;
       // dateAxis.renderer.labels.template.location = 0.5;
-      dateAxis.groupData = true;
+      // dateAxis.groupData = true;
       // dateAxis.skipEmptyPeriods = true;
       // dateAxis.groupCount = 50;
       dateAxis.keepSelection = true;
@@ -432,7 +459,7 @@ export default {
       // при часовом
       
 
-      dateAxis.groupInterval = { timeUnit: "hour", count: 1 };
+      // dateAxis.groupInterval = { timeUnit: "hour", count: 1 };
       // dateAxis.renderer.labels.template.location = 0.00001;
       // dateAxis.renderer.grid.template.location = 0;
       // dateAxis.startLocation = -0.3;
@@ -482,6 +509,7 @@ export default {
         // }, 300)
       })
 
+      
       // var range = valueAxis.axisRanges.create();
       // range.value = 85;
       // range.grid.stroke = am4core.color("#396478");
@@ -588,8 +616,8 @@ export default {
         columnTemplate.strokeOpacity = 0;
         // columnTemplate.fillOpacity = 0;
         columnTemplate.stroke = am4core.color("#fff");
-        columnTemplate.height = am4core.percent(100);
-        // columnTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+        columnTemplate.height = am4core.percent(90);
+        columnTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
         // // при минутном
         // columnTemplate.width = 10;
@@ -664,7 +692,71 @@ export default {
         series.propertyFields.stroke = "color";
       }
 
-      createSeriesForSleep()
+      const createBarSeriesForSleep = (color) => {
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        // series.stacked = true;
+        // series.noRisers = true;
+        // series.dataItems.template.locations.categoryX = 0.5;
+        series.dataFields.dateX = "to";
+        series.dataFields.openDateX = "from";
+        series.dataFields.categoryY = "category";
+        series.columns.template.propertyFields.fill = "color";
+        series.columns.template.strokeOpacity = 0;
+        series.columns.template.paddingTop = 60
+        series.columns.template.height = am4core.percent(50);
+        series.columns.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+        // series.columns.template.height = am4core.percent(100);
+
+        // var bullet = series.bullets.push(new am4charts.Bullet());
+
+        // var triangle = bullet.createChild(am4core.Triangle);
+        // triangle.width = 15;
+        // triangle.height = 13;
+
+        // triangle.dy = 40;
+        // // triangle.dx = 0
+        // triangle.direction = "bottom";
+        // triangle.visible = false
+        // triangle.fill = am4core.color(color);
+        // triangle.stroke = am4core.color(color);
+        // triangle.strokeWidth = 0;
+        // triangle.horizontalCenter = "middle";
+        // triangle.verticalCenter = "bottom";
+
+        series.columns.template.tooltipY = 0;
+        series.columns.template.tooltipText = ' '
+        series.tooltip.pointerOrientation = "down";
+        series.columns.template.showTooltipOn = "hit";
+        series.tooltip.background.cornerRadius = 5;
+        console.log(series.tooltip.background);
+        series.tooltip.background.strokeOpacity = 0;
+        series.tooltip.pointerOrientation = "vertical";
+        series.tooltip.label.minWidth = 20;
+        series.tooltip.label.minHeight = 20;
+        series.tooltip.label.textAlign = "middle";
+        series.tooltip.label.textValign = "middle";
+
+        series.columns.template.events.on("hit", function(ev) {
+          ev.event.stopPropagation()
+          chart.series.values.forEach(element => {
+            element.bulletsContainer.children.values.forEach(bullet => {
+              bullet.children.values[0].visible = false
+            })
+          });
+          
+          this.point = ev.target.dataItem.dataContext.from
+          this.pointInfo = ev.target.dataItem.dataContext
+          this.selectedColumn = ev.target.dataItem.dataContext
+          ev.target.dataItem.bullets.each((id, bullet) => {
+            bullet.children.values[0].visible = true
+          })
+
+        }, this)
+      }
+
+      // createSeriesForSleep()
+
+      createBarSeriesForSleep("#0096C8")
 
        /* Create ranges */
       function createRange(from, to, color) {
@@ -731,35 +823,6 @@ export default {
           })
         });
       })
-
-      // ------------show empty data label
-      var indicator;
-      function showIndicator() {
-        if (indicator) {
-          indicator.show();
-        }
-        else {
-          indicator = chart.tooltipContainer.createChild(am4core.Container);
-          indicator.background.fill = am4core.color("#fff");
-          indicator.background.fillOpacity = 0.8;
-          indicator.width = am4core.percent(50);
-          indicator.height = am4core.percent(50);
-          indicator.align = "center";
-          indicator.valign = "middle";
-          // indicator.x = am4core.percent(50);
-          // indicator.y = am4core.percent(50);
-
-          var indicatorLabel = indicator.createChild(am4core.Label);
-          indicatorLabel.text = "No data...";
-          indicatorLabel.align = "center";
-          indicatorLabel.valign = "middle";
-          indicatorLabel.fontSize = 20;
-        }
-      }
-
-      function hideIndicator() {
-        indicator.hide();
-      }
 
       chart.events.on("beforevalidated", (ev) => {
         // check if there's data
@@ -847,6 +910,39 @@ export default {
       chart.scrollbarX = new am4core.Scrollbar();
       // chart.scrollbarY = new am4core.Scrollbar();
       chart.scrollbarX.animationDuration = 5000;
+
+      // chart.cursor.events.on("cursorpositionchanged", function(ev) {
+      //     var yAxis = ev.target.chart.yAxes.getIndex(0);
+      //     console.log("y: ", yAxis.positionToValue(yAxis.toAxisPosition(ev.target.yPosition)));
+      // });
+
+      // const topContainer = chart.chartContainer.createChild(am4core.Container)
+      // topContainer.layout = "absolute"
+      // topContainer.toBack()
+      // topContainer.paddingBottom = 10
+      // topContainer.width = am4core.percent(100)
+      // topContainer.align = "center"
+
+      // const dateLabel = topContainer.createChild(am4core.Label)
+      // dateLabel.text = '19.05.2021'
+      // dateLabel.align = "center"
+      // dateLabel.fill = am4core.color("#000")
+      // dateLabel.fontFamily = "Foros"
+      // // dateLabel.width = am4core.percent(50)
+
+      // const label = chart.createChild(am4core.Label);
+      // label.text = '[bold] 45 6034 шагов [/]'
+      // label.fontSize = 14;
+      // label.align = "center";
+      // label.isMeasured = false;
+      // label.x = am4core.percent(50);
+      // label.y = 20;
+      // label.padding(0, 5, 0, 5);
+      // label.background.fill = am4core.color("red");
+      // label.horizontalCenter = "middle";
+      // label.contentAlign = "center"
+      // label.fontFamily = "Foros"
+      // this.dateLabel = '19.05.2021 45 6034 шагов'
       // chart.scrollbarY.start = 0;
       // chart.scrollbarY.end = 0.08;
       // chart.scrollbarX.events.on('wheel', (ev) => {
@@ -855,6 +951,31 @@ export default {
       chart.scrollbarX.disabled = true;
       chart.zoomOutButton.disabled = true;
       chart.swipeable = true;
+
+      let info = chart.plotContainer.createChild(am4core.Container);
+      info.width = am4core.percent(40);
+      info.height = 50;
+      // info.x = am4core.percent(50);
+      info.y = -2;
+      info.align = "center"
+      info.paddingTop = 7
+      // info.padding(5, 10, 10, 5);
+      // info.paddingRight = 7
+      info.background.fill = am4core.color("red");
+      info.background.fillOpacity = 1;
+      info.layout = "absolute";
+
+      let titleLabel = info.createChild(am4core.Label);
+      titleLabel.text = "17 апреля";
+      titleLabel.align = "center"
+      titleLabel.marginTop = 15
+      // titleLabel.minWidth = 60;
+
+      let titleLabel1 = info.createChild(am4core.Label);
+      titleLabel1.text = "20 000 шагов";
+      titleLabel1.align = "center"
+      titleLabel1.y = 25
+      titleLabel1.visible = false
 
       // const newData = {
       //   close: 160,
@@ -887,5 +1008,9 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
 }
 </style>
