@@ -46,16 +46,18 @@ export default {
     render () {
       let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
 
-      chart.data = [{
-        tran_amount: 125.0,
-        value_date: new Date("2019-01-05T12:00:00.000")
-      }, {
-        tran_amount: 12345.0,
-        value_date: new Date("2019-02-05T12:00:00.000")
-      }, {
-        tran_amount: 12345.0,
-        value_date: new Date("2019-03-05T12:00:00.000")
-      }];
+      // chart.data = [{
+      //   tran_amount: 125.0,
+      //   value_date: new Date("2019-01-05T12:00:00.000")
+      // }, {
+      //   tran_amount: 12345.0,
+      //   value_date: new Date("2019-02-05T12:00:00.000")
+      // }, {
+      //   tran_amount: 12345.0,
+      //   value_date: new Date("2019-03-05T12:00:00.000")
+      // }];
+
+      chart.data = parseNewDate();
       let categoryAxis = chart.xAxes.push(new am4charts.DateAxis());
       categoryAxis.start = 0.7;
       categoryAxis.keepSelection = true;
@@ -157,7 +159,8 @@ export default {
       chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // init chart locale 
       chart.language.locale = am4lang_ru_RU;
-      chart.data = this.parseData()
+      // chart.data = this.parseData()
+      chart.data = this.parseNewDate();
 
       // Set input format for the dates
       // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -293,14 +296,14 @@ export default {
 
           if (minStretchedScaleDate.isBefore(startBaseDate)) {
             console.log('Вышли за границы слева')
-            chart.data = this.parseData()
-            chart.validateData();
+            // chart.data = this.parseData()
+            // chart.validateData();
           }
 
           if (maxStretchedScaleDate.isAfter(endBaseDate)) {
             console.log('Вышли за границы справа')
-            chart.data = this.parseNewDate()
-            chart.validateData();
+            // chart.data = this.parseNewDate()
+            // chart.validateData();
           }
       })
 
