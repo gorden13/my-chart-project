@@ -292,12 +292,12 @@ export default {
         //   inSleepArray: {},
         //   inWakeArray: {}
         // })
-        array = [...array, {
-          category: '',
-          from: this.$moment(item.date.from).toDate(),
-          to: this.$moment(item.date.to).toDate(),
-          color: am4core.color('#fff')
-        }]
+        // array = [...array, {
+        //   category: '',
+        //   from: this.$moment(item.date.from).toDate(),
+        //   to: this.$moment(item.date.to).toDate(),
+        //   color: am4core.color('#fff')
+        // }]
         // складываем все точки пребывания в постели, итд.
         array = [...array, ...putsPeriods(item.inBed.periods, 'inBed', '#0096C8')]
         array = [...array, ...putsPeriods(item.sleep.periods, 'sleep', '#77BCD4')]
@@ -723,18 +723,18 @@ export default {
         // triangle.horizontalCenter = "middle";
         // triangle.verticalCenter = "bottom";
 
-        series.columns.template.tooltipY = 0;
-        series.columns.template.tooltipText = ' '
-        series.tooltip.pointerOrientation = "down";
-        series.columns.template.showTooltipOn = "hit";
-        series.tooltip.background.cornerRadius = 5;
-        console.log(series.tooltip.background);
-        series.tooltip.background.strokeOpacity = 0;
-        series.tooltip.pointerOrientation = "vertical";
-        series.tooltip.label.minWidth = 20;
-        series.tooltip.label.minHeight = 20;
-        series.tooltip.label.textAlign = "middle";
-        series.tooltip.label.textValign = "middle";
+        // series.columns.template.tooltipY = 0;
+        // series.columns.template.tooltipText = ' '
+        // series.tooltip.pointerOrientation = "down";
+        // series.columns.template.showTooltipOn = "hit";
+        // series.tooltip.background.cornerRadius = 5;
+        // console.log(series.tooltip.background);
+        // series.tooltip.background.strokeOpacity = 0;
+        // series.tooltip.pointerOrientation = "vertical";
+        // series.tooltip.label.minWidth = 20;
+        // series.tooltip.label.minHeight = 20;
+        // series.tooltip.label.textAlign = "middle";
+        // series.tooltip.label.textValign = "middle";
 
         series.columns.template.events.on("hit", function(ev) {
           ev.event.stopPropagation()
