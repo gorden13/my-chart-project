@@ -57,7 +57,7 @@ export default {
     ],
     points: result?.['test2'] || [],
     pointsNew: result?.['test'] || [],
-    barPoints: result?.['sleep3'] || [],
+    barPoints: result?.['pulseTest'] || [],
     point: null,
     pointInfo: null,
     clickedBullets: [],
@@ -327,7 +327,7 @@ export default {
 
       // console.log(this.parseSleep());
 
-      const dataPoints = this.parseSleep()
+      const dataPoints = this.parseBarData()
 
       console.log(dataPoints);
 
@@ -342,8 +342,8 @@ export default {
 
       // Create axes
       var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      this.dateAxis = dateAxis
-      var valueAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+      
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       
 
       // valueAxis.rangeChangeDuration = 5000;
@@ -358,16 +358,18 @@ export default {
       // for sleep 1 day scale
       // valueAxis.max = 200;
       // valueAxis.min = 0;
-      valueAxis.renderer.labels.template.stroke = am4core.color('#98B6C8');
-      valueAxis.renderer.grid.template.disabled = true;
+      // valueAxis.renderer.labels.template.stroke = am4core.color('#98B6C8');
+      // valueAxis.renderer.grid.template.disabled = true;
       // valueAxis.renderer.labels.template.disabled = true;
-      valueAxis.dataFields.category = "category";
-      dateAxis.renderer.grid.template.strokeDasharray = '4.3'
-      dateAxis.renderer.grid.template.strokeOpacity = 1
-      dateAxis.groupData = false;
+      // valueAxis.dataFields.category = "category";
+      // dateAxis.renderer.grid.template.strokeDasharray = '4.3'
+      // dateAxis.renderer.grid.template.strokeOpacity = 1
+      dateAxis.groupData = true;
       dateAxis.renderer.labels.template.location = 0.001;
-      dateAxis.startLocation = 0.3;
-      dateAxis.endLocation = -0.3;
+
+      
+      // dateAxis.startLocation = 0.3;
+      // dateAxis.endLocation = -0.3;
       //
 
       // valueAxis.strictMinMax = true;
@@ -453,6 +455,8 @@ export default {
       // dateAxis.skipEmptyPeriods = true;
       // dateAxis.groupCount = 50;
       dateAxis.keepSelection = true;
+
+      this.dateAxis = dateAxis
       
       // при минутном
       // dateAxis.groupInterval = { timeUnit: "minute", count: 1 };
@@ -755,8 +759,9 @@ export default {
       }
 
       // createSeriesForSleep()
+      createBarSeries('value', '#b4dd1e')
 
-      createBarSeriesForSleep("#0096C8")
+      // createBarSeriesForSleep("#0096C8")
 
        /* Create ranges */
       function createRange(from, to, color) {
@@ -881,7 +886,7 @@ export default {
         // );
         // dateAxis.start = 0.99;
         // dateAxis.end = 0.5;
-        dateAxis.tooltip.disabled = true;
+        // dateAxis.tooltip.disabled = true;
         
         // dateAxis.start = 1;
         // dateAxis.startLocation = 0.49;
@@ -952,30 +957,30 @@ export default {
       chart.zoomOutButton.disabled = true;
       chart.swipeable = true;
 
-      let info = chart.plotContainer.createChild(am4core.Container);
-      info.width = am4core.percent(40);
-      info.height = 50;
+      // let info = chart.plotContainer.createChild(am4core.Container);
+      // info.width = am4core.percent(40);
+      // info.height = 50;
       // info.x = am4core.percent(50);
-      info.y = -2;
-      info.align = "center"
-      info.paddingTop = 7
+      // info.y = -2;
+      // info.align = "center"
+      // info.paddingTop = 7
       // info.padding(5, 10, 10, 5);
       // info.paddingRight = 7
-      info.background.fill = am4core.color("red");
-      info.background.fillOpacity = 1;
-      info.layout = "absolute";
+      // info.background.fill = am4core.color("red");
+      // info.background.fillOpacity = 1;
+      // info.layout = "absolute";
 
-      let titleLabel = info.createChild(am4core.Label);
-      titleLabel.text = "17 апреля";
-      titleLabel.align = "center"
-      titleLabel.marginTop = 15
-      // titleLabel.minWidth = 60;
+      // let titleLabel = info.createChild(am4core.Label);
+      // titleLabel.text = "17 апреля";
+      // titleLabel.align = "center"
+      // titleLabel.marginTop = 15
+      // // titleLabel.minWidth = 60;
 
-      let titleLabel1 = info.createChild(am4core.Label);
-      titleLabel1.text = "20 000 шагов";
-      titleLabel1.align = "center"
-      titleLabel1.y = 25
-      titleLabel1.visible = false
+      // let titleLabel1 = info.createChild(am4core.Label);
+      // titleLabel1.text = "20 000 шагов";
+      // titleLabel1.align = "center"
+      // titleLabel1.y = 25
+      // titleLabel1.visible = false
 
       // const newData = {
       //   close: 160,
